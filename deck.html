@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>废土物资扑克 · 杀心成焚酱物品图鉴 54 张</title>
+<meta name="description" content="一副扑克牌，正面是牌面，背面是末日物资卡。物品全部来自 B 站 UP 主杀心成焚酱的视频内容：军粮罐头、0 元生存宝箱掉落、废品回收行情、自制装备。食用价值、使用价值、交换价值，一张卡写清。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#22201c;color:#e6ddc6;font-family:"Microsoft YaHei","PingFang SC",sans-serif;padding:24px 16px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:26px;letter-spacing:2px}
+h1 small{font-size:13px;color:#9a927d;font-weight:400;display:block;margin-top:6px;letter-spacing:0}
+.intro{color:#b0a88f;font-size:13px;line-height:1.9;margin:12px 0 4px;max-width:860px}
+.intro b{color:#e6ddc6}
+.disclaimer{font-size:12px;color:#7d7663;margin:8px 0 0}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.bar button{background:#3a382f;border:1px solid #5a564a;color:#e6ddc6;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px}
+.bar button:hover{background:#4a473c}
+.bar .hint{font-size:12px;color:#8a826d}
+/* ---------- 屏显卡桌 ---------- */
+.table{display:grid;grid-template-columns:repeat(auto-fill,94px);gap:14px;justify-content:center;margin-top:8px}
+.thumb{width:94px;height:131px;border-radius:7px;cursor:pointer;perspective:600px}
+.thumb .in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s}
+.thumb.flip .in{transform:rotateY(180deg)}
+.thumb .f,.thumb .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:7px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.55)}
+.thumb .f{transform:rotateY(180deg)}
+.thumb .f .pf,.thumb .b .pf{transform:scale(.343);transform-origin:0 0;width:274px;height:382px}
+/* ---------- 卡片本体 63×88mm ---------- */
+.card{width:274px;height:382px;position:relative}
+/* 背面：物资卡 */
+.card.back{background:#3f4438;border-radius:16px;padding:9px;box-shadow:inset 0 0 0 2px #2e3329}
+.card.back .paper{position:relative;height:100%;border-radius:9px;
+  background:radial-gradient(ellipse at 30% 20%,#efe4bd 0%,#e6d8a8 45%,#d9c68f 100%);color:#2b261a;
+  box-shadow:inset 0 0 26px rgba(120,90,40,.35);padding:12px 13px;display:flex;flex-direction:column}
+.plaque{background:linear-gradient(#5b584d,#454338);color:#efe4bd;border-radius:6px;padding:5px 8px;
+  font-size:16px;font-weight:700;letter-spacing:1px;text-align:center;box-shadow:inset 0 1px 0 #6e6a5c,0 1px 2px rgba(0,0,0,.4)}
+.plaque .tag{font-weight:400;font-size:13px}
+.illus{flex:0 0 108px;display:flex;align-items:center;justify-content:center;margin:6px 0 2px}
+.illus span{font-size:74px;filter:drop-shadow(3px 4px 3px rgba(60,40,10,.35))}
+.code{font-size:10px;letter-spacing:2px;color:#6b5f45;border-bottom:1.5px solid #6b5f45;padding:0 0 4px;margin-bottom:7px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;font-size:12.5px;font-weight:700;line-height:1.55}
+.stats .lbl{color:#2b261a}
+.stats .val{font-weight:700}
+.stats .plus{color:#3e8f2e;letter-spacing:1px}
+.stats .minus{color:#b42318;letter-spacing:1px}
+.stats .unit{font-weight:400;font-size:11px}
+.stats div{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dotted #c4b183}
+.flavor{font-size:11.5px;line-height:1.7;color:#4a4030;border-top:1.5px solid #6b5f45;margin-top:8px;padding-top:7px;flex:1}
+.corner{position:absolute;top:6px;right:7px;font-size:15px;font-weight:800;color:#3a352a;opacity:.85;line-height:1.1;text-align:center}
+.corner.red{color:#a03028}
+/* 正面：扑克牌面 */
+.card.front{background:#f7f4ea;border-radius:12px;box-shadow:inset 0 0 0 2px #d9d2bd,0 1px 3px rgba(0,0,0,.4);color:#1d1b16}
+.card.front.red{color:#a03028}
+.pf-corner{position:absolute;top:8px;left:10px;font-size:26px;font-weight:800;line-height:1;text-align:center}
+.pf-corner b{display:block;font-size:24px}
+.pf-corner span{display:block;font-size:20px;margin-top:1px}
+.pf-corner.br{top:auto;left:auto;right:10px;bottom:8px;transform:rotate(180deg)}
+.pf-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}
+.pf-center .pip{font-size:96px;line-height:1}
+.pf-center .court{font-size:58px;font-weight:800;letter-spacing:2px}
+.pf-center .sub{font-size:12px;color:#8a826d;letter-spacing:1px}
+.pf-center .ace{font-size:120px}
+.pf-name{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:13px;font-weight:700;color:#6b6350;letter-spacing:1px}
+/* ---------- 打印 ---------- */
+.sheet{display:none}
+@media print{
+  body{background:#fff;padding:0}
+  .wrap>*{display:none!important}
+  .sheet{display:block!important}
+  .sheet{page-break-after:always}
+  .sheet:last-child{page-break-after:auto}
+  .pg{display:grid;grid-template-columns:repeat(3,63mm);grid-auto-rows:88mm;gap:2mm;justify-content:center;padding:6mm 0}
+  .pg .cell{width:63mm;height:88mm;overflow:hidden}
+  .pg .cell .card{transform:scale(.868);transform-origin:0 0;box-shadow:none;border-radius:4mm}
+  body.print-backs .sheet.fronts{display:none!important}
+  body.print-fronts .sheet.backs{display:none!important}
+  @page{size:A4 portrait;margin:0}
+}
+.note{font-size:12px;color:#8a826d;margin-top:14px;line-height:1.8}
+</style>
+</head>
+<body class="print-fronts">
+<div class="wrap">
+  <h1>废土物资扑克 <small>正面打牌，背面认物资 · 54 张 · 物品设定来自 B 站 UP 主「杀心成焚酱」的公开视频与专栏</small></h1>
+  <p class="intro">
+    四个花色，四类价值：<b>♠ 军粮与罐头</b>（末日硬通货，按黑面包计价）、<b>♥ 废土热乎饭</b>（0 元生存副本掉落）、
+    <b>♦ 换钱装备</b>（废品回收站行情）、<b>♣ 生存工具</b>（使用价值）。A 最大、2 最小，花色内按物资价值排序。
+    大小王是小丑面具——有人看见笑脸，有人看见泪水。点卡片翻面。
+  </p>
+  <p class="disclaimer">非官方同人作品，仅供生存爱好者自用与打印；物品设定与「黑面包」计价体系来自杀心成焚酱公开内容，版权归原 UP 主所有。</p>
+  <div class="bar">
+    <button onclick="flipAll(true)">全部翻到牌面</button>
+    <button onclick="flipAll(false)">全部翻到物资卡</button>
+    <button onclick="doPrint('fronts')">打印牌面（6 页）</button>
+    <button onclick="doPrint('backs')">打印物资卡（6 页）</button>
+    <span class="hint">A4 竖向 · 缩放 100% · 无边距；双面打印选「长边翻转」，牌背已做镜像对位</span>
+  </div>
+  <div class="table" id="table"></div>
+  <p class="note">
+    计价说明：1 黑面包 = 末日通用货币本位（参考价：饱食 35 点、口感跟喂猪的糠似的，但它就是人民币）。
+    人民币与黑面包汇率参考杀哥 0 元生存实测：约 2 元 = 1 黑面包。回收行情为杀哥知乎《捡垃圾指南》所记价格，各地有浮动。
+  </p>
+</div>
+<div class="sheet fronts" id="sheetFronts"></div>
+<div class="sheet backs" id="sheetBacks"></div>
+<script>
+/* ---------------- 54 张牌数据 ----------------
+ * s: s=♠军粮罐头 h=♥废土热乎饭 d=♦换钱装备 c=♣生存工具 BJ/SJ=大小王
+ * stats: [标签, 值]；值里 '+' 开头渲染绿色，'-' 开头渲染红色 */
+const ITEMS = [
+/* ===== 黑桃 ♠ 军粮与罐头 ===== */
+{s:'s',r:'A',name:'美军MRE',tag:'未开封',emoji:'🥫',code:'01',
+ stats:[['饱食度','+++'],['解渴','++'],['心情','+++'],['理智','++'],['营养','+++'],['卡路里','3000 kcal'],['价值','40 黑面包'],['重量','740 g']],
+ flavor:'菜单二十几种任选，自带无焰加热器，不用火也能吃上热乎的。末日里能救命，平日里能镇宅。就是盐放得狠，吃完多备水。'},
+{s:'s',r:'K',name:'法国单兵口粮',tag:'全套',emoji:'🍱',code:'02',
+ stats:[['饱食度','230 点'],['理智','+20'],['开心','+40'],['营养','+++'],['buff','精致卫生'],['价值','35 黑面包'],['重量','1.3 kg'],['排名','口粮榜第一']],
+ flavor:'咖喱盖饭、香肠饭、荞麦饭，还送防风炉、火柴、酒精膏，茶包咖啡一样不缺。用料扎实做工精细，比廉价自热盒饭强出一条街。杀哥口粮测评榜第一名，没有争议。'},
+{s:'s',r:'Q',name:'俄罗斯内务部口粮',tag:'未开封',emoji:'🥘',code:'03',
+ stats:[['饱食度','270 点'],['理智','+10'],['心情','++'],['营养','+++'],['特色','肝酱罐头'],['价值','25 黑面包'],['重量','1.2 kg'],['重量级','实在']],
+ flavor:'土豆炖牛肉、肉丸子、果酱饼干盐和巧克力，还有一罐杀哥一直惦记的肝酱。包装糙、餐具脆，内容一点不含糊。俄式生存美学：不重要好看，重要扛饿。'},
+{s:'s',r:'J',name:'巴西单兵口粮',tag:'未开封',emoji:'🍛',code:'04',
+ stats:[['饱食度','220 点'],['理智','+10'],['心情','++'],['营养','++'],['卡路里','2800 kcal'],['价值','20 黑面包'],['重量','850 g'],['特色','分量足']],
+ flavor:'南美热土的诚意，米饭豆子炖肉管够。口味偏淡，适合末日里盐巴紧缺的岁月。拆开先吃肉，饼干留着当路粮。'},
+{s:'s',r:'10',name:'08型飞行远航口粮',tag:'空军同款',emoji:'✈️',code:'05',
+ stats:[['饱食度','180 点'],['理智','+8'],['心情','++'],['营养','++'],['特色','牛肉干'],['价值','16 黑面包'],['重量','500 g'],['特色','耐存放']],
+ flavor:'特种机飞行远航食品，先尝个牛肉干——相当高了啊。压缩得结实，一小块嚼半天，适合蹲守、赶路、没工夫生火的日子。'},
+{s:'s',r:'9',name:'英国单兵口粮',tag:'残缺版',emoji:'🫙',code:'06',
+ stats:[['饱食度','150 点'],['理智','+5'],['心情','+'],['营养','++'],['特色','果酱很咸'],['价值','8 黑面包'],['重量','600 g'],['评价','开盲盒']],
+ flavor:'残缺版，开出来什么全看命。果酱咸得像蛋黄酱，奶茶粉倒还凑合。大英帝国的伙食，跟它的领土一样缩水了。'},
+{s:'s',r:'8',name:'俄罗斯陆军口粮',tag:'未开封',emoji:'🥔',code:'07',
+ stats:[['饱食度','200 点'],['理智','+5'],['心情','+'],['营养','++'],['特色','牛油厚'],['价值','12 黑面包'],['重量','900 g'],['评价','包装糙']],
+ flavor:'陆军版比内务部糙不少，餐具一捏就碎。豆子牛肉罐头偏咸，胡萝卜西红柿味的一般般，闹不登的。白糖给得大方， chocolate 微苦，凑合吃。'},
+{s:'s',r:'7',name:'火鸡肉罐头',tag:'整只',emoji:'🦃',code:'08',
+ stats:[['饱食度','++'],['心情','++'],['营养','++'],['卡路里','900 kcal'],['特色','肉整只'],['价值','14 黑面包'],['重量','800 g'],['评价','实在']],
+ flavor:'末日废土物资之火鸡肉罐头，一整只火鸡塞进去，开盖就是节日。冷吃热吃都行，骨头都能嚼出味来。'},
+{s:'s',r:'6',name:'午餐肉罐头',tag:'生产于25年前',emoji:'🥓',code:'09',
+ stats:[['饱食度','++'],['理智','-10'],['心情','+'],['营养','+'],['风险','看运气'],['价值','6 黑面包'],['重量','340 g'],['评价','考古']],
+ flavor:'保质期比你的年龄都长。没涨罐没异味就能吃，动过口的别碰。吃饱这件事，面子是最先被淘汰的东西。'},
+{s:'s',r:'5',name:'人畜通用食品',tag:'未开封',emoji:'🐶',code:'10',
+ stats:[['饱食度','++'],['理智','-5'],['心情','+'],['营养','+'],['特色','猫狗也能吃'],['价值','5 黑面包'],['重量','400 g'],['评价','战略物资']],
+ flavor:'人能吃，狗也能吃，灾年里这就是双份保险。跟你的狗分着吃，它给你放哨，你给它一口，这买卖不亏。'},
+{s:'s',r:'4',name:'鹅肝酱罐头',tag:'俄式',emoji:'🥄',code:'11',
+ stats:[['饱食度','+'],['心情','+++'],['理智','+5'],['营养','++'],['特色','腥，但香'],['价值','7 黑面包'],['重量','120 g'],['评价','杀哥最爱']],
+ flavor:'一打开腥味直冲天灵盖，抹在黑面包上居然是真香。末日里少有的体面食物，配茶包吃，能骗自己日子还过得去。'},
+{s:'s',r:'3',name:'「冰点毛桃」罐头',tag:'未开封',emoji:'🍑',code:'12',
+ stats:[['饱食度','+'],['解渴','++'],['心情','+++'],['理智','++'],['营养','+'],['卡路里','257 kcal'],['价值','5 黑面包'],['重量','350 g']],
+ flavor:'一小罐毛桃罐头，吃下去只能勉强填住肚子，但当熟悉的糖分甜味在舌尖散开，能让人恍惚间短暂找回灾前生活的些许影子。用它换几个黑面包或两根香烟，也是一笔极为划算的买卖。'},
+{s:'s',r:'2',name:'果肉酸梅粉',tag:'炎热天气',emoji:'🧊',code:'13',
+ stats:[['饱食度','0'],['解渴','+++'],['心情','++'],['理智','+5'],['营养','+'],['价值','3 黑面包'],['重量','80 g'],['评价','夏日刚需']],
+ flavor:'炎热天气饮品推荐，酸梅粉冲水，冰镇更佳。末日里中暑比丧尸先要命，这包粉就是移动的树荫。'},
+/* ===== 红桃 ♥ 废土热乎饭 ===== */
+{s:'h',r:'A',name:'篝火烤鸡',tag:'明火现烤',emoji:'🔥',code:'14',
+ stats:[['饱食度','++++'],['心情','++++'],['理智','+15'],['营养','++'],['卡路里','1200 kcal'],['价值','20 黑面包'],['热度','237万播放'],['评价','镇店之作']],
+ flavor:'末日废土初级食谱之篝火烤鸡，明火烤制，外皮焦香。两百多万人围观一只鸡的诞生。火焰一起，你就还是个人，不是编号。'},
+{s:'h',r:'K',name:'酸菜牛尾巴大肉汤',tag:'末日主题',emoji:'🍲',code:'15',
+ stats:[['饱食度','+++'],['心情','+++'],['理智','+10'],['营养','++'],['热量','1500 kcal'],['价值','15 黑面包'],['份量','一锅'],['评价','东北硬菜']],
+ flavor:'酸菜解腻，牛尾顶饱，汤能喝三碗。炖汤的香味能飘半个街区——末日里这叫危险，也叫值得。'},
+{s:'h',r:'Q',name:'盐焗土豆配鸡蛋',tag:'支线任务',emoji:'🥔',code:'16',
+ stats:[['饱食度','++'],['心情','++'],['理智','+8'],['营养','++'],['热量','600 kcal'],['价值','8 黑面包'],['份量','两人份'],['评价','禅意']],
+ flavor:'完成支线目标【制作盐焗土豆配鸡蛋】的时候，耳畔传来了别人家办事的鞭炮声。很好，外面正在为我庆祝，感谢他的鞭炮。'},
+{s:'h',r:'J',name:'车筐纯牛奶',tag:'蒙牛·随机散落',emoji:'🥛',code:'17',
+ stats:[['饱食度','+'],['解渴','++'],['心情','+++'],['理智','+5'],['营养','++'],['价值','6 黑面包'],['保质期','看日期'],['评价','开到即赚']],
+ flavor:'共享单车的车筐里偶尔有小礼物。排成排的肯定没货，那是工作人员摆的；得找随机散落的。成都开到过一盒，美美地喝掉了。'},
+{s:'h',r:'10',name:'必胜客剩披萨',tag:'干净整洁',emoji:'🍕',code:'18',
+ stats:[['饱食度','++'],['心情','++'],['理智','+8'],['营养','+'],['热量','700 kcal'],['价值','6 黑面包'],['温度','还热乎'],['评价','狂炫']],
+ flavor:'披萨太大，总有人吃不完，剩下的往往干净整洁。蹲准了点，狂炫就完事了，不要觉得丢人。肯德基麦当劳都比不了这个命中率。'},
+{s:'h',r:'9',name:'警察局泡面',tag:'少拿点',emoji:'🍜',code:'19',
+ stats:[['饱食度','++'],['心情','+'],['理智','-5'],['营养','+'],['热量','500 kcal'],['价值','4 黑面包'],['份量','两袋'],['评价','要讲武德']],
+ flavor:'饿急了可以去警察局求助，门口常摆着方便食品，大方的警察让你随便拿。一次拿两袋吃饱就行。扛走一箱那位，脸皮是真的厚。'},
+{s:'h',r:'8',name:'素食斋套餐',tag:'随喜',emoji:'🥬',code:'20',
+ stats:[['饱食度','++'],['心情','+'],['理智','+10'],['营养','+'],['热量','450 kcal'],['价值','3 黑面包'],['价格','随心给'],['评价','管饱']],
+ flavor:'门口有个募捐箱，不给钱也能进去吃，饭菜朴素但能吃饱。不要剩饭，进了人家的地盘就守人家的规矩，吃完帮人家干点活。'},
+{s:'h',r:'7',name:'老板赏的锅包肉',tag:'热乎',emoji:'🍖',code:'21',
+ stats:[['饱食度','++'],['心情','+++'],['理智','+10'],['营养','+'],['热量','800 kcal'],['价值','5 黑面包'],['获取','嘴要甜'],['评价','人情味']],
+ flavor:'捡个不锈钢碗，去街边饭店跟老板讲清难处。这年头好心人不少，猪蹄子锅包肉都常见。吃了人家的饭，嘴一定要甜，祝老板发财的话使劲说。'},
+{s:'h',r:'6',name:'过期小蛋糕',tag:'废弃民房',emoji:'🍰',code:'22',
+ stats:[['饱食度','+'],['心情','+'],['理智','-5'],['营养','+'],['热量','350 kcal'],['价值','2 黑面包'],['风险','看状态'],['评价','甜品自由']],
+ flavor:'搜刮废弃民房的常规收获，过期没多久的基本能吃。奶油类看天吃饭，长毛的果断放回去。末日里的第一块蛋糕，值一个完整的心情值。'},
+{s:'h',r:'5',name:'粘玉米',tag:'自种',emoji:'🌽',code:'23',
+ stats:[['饱食度','++'],['心情','+'],['理智','+5'],['营养','++'],['热量','200 kcal'],['价值','4 黑面包'],['周期','四个月'],['评价','浑身是宝']],
+ flavor:'末日废土种植首选：皮实、耐旱、产量大，芯和杆晒干了还能当燃料。去农村找种子，粘玉米自己吃，笨苞米作第二选择。行距五十到六十公分，别种太密。'},
+{s:'h',r:'4',name:'热乎剩饭',tag:'饭店后门',emoji:'🍚',code:'24',
+ stats:[['饱食度','++'],['心情','+'],['理智','+5'],['营养','+'],['热量','550 kcal'],['价值','1 黑面包'],['温度','刚出锅'],['评价','保命粮']],
+ flavor:'饭店打烊前后守一守，剩下的饭菜还带着温度。不偷不抢，凭脸皮和嘴甜吃饭，这不寒碜。'},
+{s:'h',r:'3',name:'半瓶冰红茶',tag:'来路不明',emoji:'🥤',code:'25',
+ stats:[['饱食度','0'],['解渴','？'],['心情','-'],['理智','-20'],['风险','极高'],['价值','0 黑面包'],['建议','别捡'],['评价','反面教材']],
+ flavor:'看到半瓶的冰红茶和啤酒，别捡，也别喝。你要不信邪，自己试一下就知道了。有些便宜，贵得要命。'},
+{s:'h',r:'2',name:'馄饨（别人吃剩的）',tag:'网吧时代',emoji:'🥟',code:'26',
+ stats:[['饱食度','+'],['心情','+'],['理智','-5'],['营养','+'],['热量','300 kcal'],['价值','1 黑面包'],['场景','刚流浪时'],['评价','起点']],
+ flavor:'刚流浪那阵睡在网吧，看别人打游戏，吃别人吃剩的馄饨，裤子开了缝都没钱补。谁都有这么一段，记住这个味，往后吃什么都香。'},
+/* ===== 方块 ♦ 换钱装备 ===== */
+{s:'d',r:'A',name:'黑面包',tag:'货币本位',emoji:'🍞',code:'27',
+ stats:[['饱食度','35 点'],['理智','-15'],['心情','+'],['营养','++'],['口感','粗糙发酸'],['价值','1 黑面包'],['重量','500 g'],['地位','末日人民币']],
+ flavor:'麸皮面包、全麦面包，微微的咸味，口感粗糙发酸发涩，跟喂猪的糠似的——杀酱如是说。二战时圣彼得堡人靠它撑到胜利。文明散架的那天，它就是钱本身。'},
+{s:'d',r:'K',name:'PSP二代游戏机',tag:'完好',emoji:'🎮',code:'28',
+ stats:[['回收价','60 元'],['约','30 黑面包'],['稀缺度','++'],['重量','190 g'],['风险','低'],['理智','+20'],['获取','黄金宝箱'],['评价','宝箱之王']],
+ flavor:'宝箱里开出的最好的一件装备，卖了六十块，够半个月利息。游戏机这种东西，末日前是快乐，末日里是硬通货。'},
+{s:'d',r:'Q',name:'紫铜',tag:'来源要干净',emoji:'🟠',code:'29',
+ stats:[['回收价','35 元/斤'],['约','17 黑面包'],['稀缺度','+++'],['重量','按斤'],['风险','高'],['理智','+5'],['来源','电缆·零件'],['评价','碰都别碰贼货']],
+ flavor:'正常垃圾箱里根本捡不到铜。经常大量卖黄铜的，不是贩子就是工厂的，再不就是贼。看见成捆的电缆，转身就走——那不是宝箱，是陷阱。'},
+{s:'d',r:'J',name:'黄铜小雕像',tag:'垃圾箱开出',emoji:'🗿',code:'30',
+ stats:[['回收价','20 元/斤'],['约','10 黑面包'],['稀缺度','++'],['重量','300 g'],['风险','低'],['理智','+10'],['获取','百宝箱'],['评价','艺术品变现']],
+ flavor:'垃圾箱里什么都可能有：没有坏的台灯、整瓶的白酒、黄铜的小雕像。艺术品这东西，文明在时看审美，文明散了看克重。'},
+{s:'d',r:'10',name:'废电脑',tag:'能开机',emoji:'💻',code:'31',
+ stats:[['回收价','按件议价'],['约','15 黑面包'],['稀缺度','++'],['重量','3 kg+'],['风险','低'],['理智','+5'],['获取','废弃民居'],['评价','配件拆着卖']],
+ flavor:'捡到过整台的电脑。能开机翻倍价，不能开机的拆主板内存条分开卖。会拆解的人，垃圾堆里处处是零件库。'},
+{s:'d',r:'9',name:'诺基亚',tag:'砸核桃款',emoji:'📵',code:'32',
+ stats:[['回收价','30 元'],['约','15 黑面包'],['稀缺度','+'],['重量','90 g'],['风险','低'],['理智','+15'],['特色','待机一个月'],['评价','末日通讯']],
+ flavor:'能砸核桃，能待机一个月，摔十次还能打电话。智能手机在末日是砖头，诺基亚才是通讯设备。'},
+{s:'d',r:'8',name:'行李箱',tag:'带锁',emoji:'🧳',code:'33',
+ stats:[['回收价','按件'],['约','6 黑面包'],['稀缺度','+'],['重量','3 kg'],['风险','低'],['理智','+5'],['特色','储物+拖运'],['评价','一物两用']],
+ flavor:'宝箱常规掉落。轮子好的能拖着走，锁好的能锁东西，末日里它既是仓库又是房本。'},
+{s:'d',r:'7',name:'铝合金易拉罐',tag:'踩扁二维化',emoji:'🥫',code:'34',
+ stats:[['回收价','5毛5/斤'],['约','0.3 黑面包'],['稀缺度','++'],['重量','轻'],['风险','低'],['理智','+2'],['特色','比铁罐值钱'],['评价','铝的尊严']],
+ flavor:'装可乐啤酒的铝罐，比红牛王老吉的铁罐值钱。瓶子捡多了要二维化——挨个踩扁再装袋。攒够了去找游戏回收商人，哦不，废品回收站。'},
+{s:'d',r:'6',name:'硬纸壳',tag:'优质',emoji:'📦',code:'35',
+ stats:[['回收价','1.2 元/公斤'],['约','0.6 黑面包'],['稀缺度','++'],['重量','按公斤'],['风险','低'],['理智','+2'],['特色','还能糊窗'],['评价','一物三用']],
+ flavor:'硬的是优质纸壳，软的只能卖七毛，别掺一起坏了行情。卖不完的留着糊窗户、当床垫——破衣服纸壳子，就是流浪汉的席梦思。'},
+{s:'d',r:'5',name:'塑料瓶',tag:'农夫山泉优先',emoji:'💧',code:'36',
+ stats:[['回收价','1毛/3个'],['约','0.15 黑面包'],['稀缺度','+++'],['重量','轻'],['风险','低'],['理智','+2'],['特色','按重量收'],['评价','铜币']],
+ flavor:'矿泉水瓶是铜币，易拉罐是铝币。农夫山泉比别的瓶子都重些，同样十个多卖半毛。捡瓶子也要讲性价比，这是死知识里的活学问。'},
+{s:'d',r:'4',name:'铁块',tag:'1块3一斤',emoji:'⚙️',code:'37',
+ stats:[['回收价','1.3 元/斤'],['约','0.65 黑面包'],['稀缺度','++'],['重量','重'],['风险','低'],['理智','+2'],['特色','压秤'],['评价','稳重之选']],
+ flavor:'铁块压秤，一麻袋顶别人两袋。就是真沉，练体力也练腰。捡废品这件事，最后都是力学问题。'},
+{s:'d',r:'3',name:'铁丝',tag:'6毛一斤',emoji:'🪝',code:'38',
+ stats:[['回收价','6毛/斤'],['约','0.3 黑面包'],['稀缺度','+'],['重量','按斤'],['风险','中','刮手'],['理智','+2'],['特色','可改工具'],['评价','劳保先行']],
+ flavor:'铁丝六毛一斤，价钱不高但缠手——处理时务必戴手套，玻璃和针头都爱跟它缠在一起。废品堆里受伤，流浪时期一场破伤风就要命。'},
+{s:'d',r:'2',name:'软纸壳',tag:'7毛',emoji:'🗑️',code:'39',
+ stats:[['回收价','7毛/公斤'],['约','0.35 黑面包'],['稀缺度','+++'],['重量','轻'],['风险','低'],['理智','+2'],['特色','量大'],['评价','保底收入']],
+ flavor:'软纸壳不值钱，好在量大管饱。收废品的按公斤算，你按楼道算。积少成多，末日经济学第一课。'},
+/* ===== 梅花 ♣ 生存工具 ===== */
+{s:'c',r:'A',name:'大铁钩子',tag:'打野神器',emoji:'🪝',code:'40',
+ stats:[['耐久','++++'],['便携','+++'],['获取','五金店'],['理智','+5'],['交换价值','8 黑面包'],['重量','600 g'],['场景','翻宝箱'],['评价','开局必得']],
+ flavor:'翻垃圾箱最好准备一根铁钩子，勾出箱底的垃圾袋，方便，也不伤手。永远不要空手掏——里面的玻璃、针头、铁片，比你想象的狠。打野流的标志性武器。'},
+{s:'c',r:'K',name:'小锤斧',tag:'砸铁专用',emoji:'🔨',code:'41',
+ stats:[['耐久','++++'],['便携','++'],['获取','劳保店'],['理智','+5'],['交换价值','10 黑面包'],['重量','800 g'],['场景','拆解'],['评价','装备升级']],
+ flavor:'装备好的打野人手一把，专砸破旧桌椅上头的铁件。钩子负责找，锤斧负责拆，配合起来，一条街就是你的矿。'},
+{s:'c',r:'Q',name:'2块5斧子',tag:'测评同款',emoji:'🪓',code:'42',
+ stats:[['耐久','++'],['便携','+++'],['获取','2.5 元'],['理智','+8'],['交换价值','2 黑面包'],['重量','500 g'],['场景','劈柴·防身'],['评价','49万人看过']],
+ flavor:'2块5一把斧子，测评下到底好不好用——结论是能用，别指望太多。两块五买不了吃亏，也买不了好钢，砍砍柴够用，砍命运差点意思。'},
+{s:'c',r:'J',name:'大丝袋子',tag:'99格仓库',emoji:'🛍️',code:'43',
+ stats:[['耐久','+++'],['便携','+++'],['获取','垃圾箱'],['理智','+5'],['交换价值','3 黑面包'],['重量','100 g'],['容量','99 格'],['评价','开局先找它']],
+ flavor:'小的是66格仓库，大的是99格仓库。开局一无所有，先找到它，你才有背包系统。麻袋一上肩，整条街的物资都有地方放。'},
+{s:'c',r:'10',name:'劳保手套',tag:'防针头',emoji:'🧤',code:'44',
+ stats:[['耐久','++'],['便携','++++'],['获取','劳保店'],['理智','+3'],['交换价值','2 黑面包'],['重量','60 g'],['场景','翻宝箱必戴'],['评价','保命装']],
+ flavor:'捡垃圾三大件之一。垃圾箱里的针头和玻璃片专挑赤手的人下手。流浪时期一场病就能要命，一双几块钱的手套，是性价比最高的保险。'},
+{s:'c',r:'9',name:'易拉罐警报器',tag:'自制',emoji:'🔔',code:'45',
+ stats:[['耐久','++'],['便携','++'],['获取','自制'],['理智','+15'],['交换价值','1 黑面包'],['重量','400 g'],['场景','庇护所外围'],['评价','哨兵']],
+ flavor:'石子装进易拉罐，麻线穿过拉环，按间隔串起来，挂在出口处。装满石子的罐子一响，你就该绷紧神经——准备战斗，或者溜之大吉。'},
+{s:'c',r:'8',name:'单人净水器',tag:'自制',emoji:'💧',code:'46',
+ stats:[['耐久','+++'],['便携','+++'],['获取','自制'],['理智','+20'],['交换价值','5 黑面包'],['重量','200 g'],['材料','瓶·棉·炭·沙'],['评价','续命装备']],
+ flavor:'塑料瓶切割做漏斗，瓶口棉花、中层木炭、底层沙子，一层压一层。木炭必须是木头烧的。水！水！水！末日第一优先级。'},
+{s:'c',r:'7',name:'砖头土灶',tag:'留缝隙',emoji:'🧱',code:'47',
+ stats:[['耐久','+++'],['便携','0'],['获取','自制'],['理智','+10'],['交换价值','2 黑面包'],['重量','10 kg+'],['场景','室内做饭'],['评价','余烬浇水']],
+ flavor:'几块砖摞起来，围的时候留微小缝隙助燃，外面再围一圈砖防失火。每次做完饭，余烬必须浇水处理——炉子救你的命，余烬要你的房。'},
+{s:'c',r:'6',name:'砖头枕头',tag:'棉布包',emoji:'🛏️',code:'48',
+ stats:[['耐久','++++'],['便携','0'],['获取','自制'],['理智','+5'],['交换价值','1 黑面包'],['重量','2.5 kg'],['场景','过夜'],['评价','睡个整觉']],
+ flavor:'外面包一层棉布或塑料，里面放两块砖。硬是硬了点，但落枕总比落难强。睡得好的人，第二天才有力气开宝箱。'},
+{s:'c',r:'5',name:'不锈钢碗',tag:'要饭神器',emoji:'🥣',code:'49',
+ stats:[['耐久','++++'],['便携','+++'],['获取','垃圾箱'],['理智','+5'],['交换价值','3 黑面包'],['重量','150 g'],['场景','饭店门口'],['评价','体面']],
+ flavor:'完好无缺的不锈钢碗，垃圾箱里常有。要饭有了家伙什，老板看着也顺眼。生存这件事，体面不是装出来的，是省出来的。'},
+{s:'c',r:'4',name:'铁罐头盒',tag:'烧水用',emoji:'🏺',code:'50',
+ stats:[['耐久','++'],['便携','+++'],['获取','随处'],['理智','+8'],['交换价值','1 黑面包'],['重量','40 g'],['特色','耐高温'],['评价','铝罐勿近火']],
+ flavor:'铁罐不值钱，但耐高温能烧水；铝罐值钱，一近火就化。值钱的和有用的经常不是同一个——末日哲学第一课。'},
+{s:'c',r:'3',name:'橘子皮',tag:'野生空气清新剂',emoji:'🍊',code:'51',
+ stats:[['耐久','-'],['便携','+++'],['获取','宝箱'],['理智','+5'],['交换价值','0'],['重量','20 g'],['场景','床头'],['评价','SAN 回复']],
+ flavor:'换不了钱也有它的价值：放在床头就是野生的空气清新剂，净化空气，顺带净化心情。末日里不花钱的好东西，都长这样。'},
+{s:'c',r:'2',name:'钢铁侠玩偶',tag:'SAN伙伴',emoji:'🤖',code:'52',
+ stats:[['耐久','++'],['便携','++++'],['获取','宝箱'],['理智','+15'],['交换价值','2 黑面包'],['重量','80 g'],['特色','会保护宿主'],['评价','精神装备']],
+ flavor:'不能吃也不能卖的东西也有价值：玩具带在身边，设定成有超能力的伙伴，关键时刻它会保护宿主。流浪久了的人，都得给自己找个不开口的朋友。'},
+/* ===== 王 ===== */
+{s:'BJ',r:'大王',name:'小丑面具',tag:'笑脸',emoji:'🎭',code:'53',
+ stats:[['理智','+50'],['心情','∞'],['耐久','++'],['便携','++++'],['获取','初始装备'],['重量','50 g'],['特色','匿名'],['评价','本命装备']],
+ flavor:'当他戴上小丑面具的那一刻，大伙都悟了：有人发现面具是一张笑脸。没人知道面具下面是谁，这就够了。末日最贵的装备，是一张让人认不出你的脸。'},
+{s:'SJ',r:'小王',name:'小丑面具',tag:'泪水',emoji:'😞',code:'54',
+ stats:[['理智','+30'],['心情','-10'],['耐久','++'],['便携','++++'],['获取','初始装备'],['重量','50 g'],['特色','真实'],['评价','背面刻着'],
+ ],
+ flavor:'有人看到面具背后有泪水在流淌。至于面具后面的人看到什么，我不清楚。卖过房帮过兄弟，摸过狗熊救过猫狗——笑是给世界的，泪是自己的。'}
+];
+const SUIT = {s:{sym:'♠',cls:'',label:'军粮与罐头'},h:{sym:'♥',cls:'red',label:'废土热乎饭'},d:{sym:'♦',cls:'red',label:'换钱装备'},c:{sym:'♣',cls:'',label:'生存工具'}};
+
+/* ---------------- 渲染 ---------------- */
+function statsHtml(st){
+  return '<div class="stats">' + st.map(function(p){
+    var v = String(p[1]);
+    var cls = v[0]==='+' ? 'plus' : (v[0]==='-' ? 'minus' : '');
+    return '<div><span class="lbl">' + p[0] + '</span><span class="val ' + cls + '">' + v.replace(/^\+/,'') + '</span></div>';
+  }).join('') + '</div>';
+}
+function backHtml(it){
+  var s = it.s==='BJ'||it.s==='SJ' ? {sym:'★',cls:'red'} : SUIT[it.s];
+  return '<div class="card back">' +
+    '<div class="corner ' + s.cls + '">' + s.sym + '<br>' + it.r + '</div>' +
+    '<div class="paper">' +
+      '<div class="plaque">「' + it.name + '」<span class="tag">[ ' + it.tag + ' ]</span></div>' +
+      '<div class="illus"><span>' + it.emoji + '</span></div>' +
+      '<div class="code">20261110-' + it.code + '</div>' +
+      statsHtml(it.stats) +
+      '<div class="flavor">' + it.flavor + '</div>' +
+    '</div></div>';
+}
+function frontHtml(it){
+  var s = it.s==='BJ'||it.s==='SJ' ? {sym:'★',cls:'red',label:'王'} : SUIT[it.s];
+  var court = ['K','Q','J'].indexOf(it.r) >= 0;
+  var center;
+  if (it.r === 'A') center = '<div class="pip ace">' + s.sym + '</div><div class="sub">' + it.name + '</div>';
+  else if (court) center = '<div class="court">' + it.r + '</div><div class="pip" style="font-size:44px">' + s.sym + '</div><div class="sub">' + it.name + '</div>';
+  else center = '<div class="pip">' + s.sym + '</div><div class="sub">' + it.r + ' · ' + it.name + '</div>';
+  return '<div class="card front ' + s.cls + '">' +
+    '<div class="pf-corner"><b>' + it.r + '</b><span>' + s.sym + '</span></div>' +
+    '<div class="pf-corner br"><b>' + it.r + '</b><span>' + s.sym + '</span></div>' +
+    '<div class="pf-center">' + center + '</div>' +
+    '<div class="pf-name">' + s.label + '</div>' +
+  '</div>';
+}
+/* 屏显桌面：默认亮背面（物资卡），点击翻到牌面 */
+var table = document.getElementById('table');
+table.innerHTML = ITEMS.map(function(it,i){
+  return '<div class="thumb" data-i="' + i + '"><div class="in">' +
+    '<div class="b">' + scale(backHtml(it)) + '</div>' +
+    '<div class="f">' + scale(frontHtml(it)) + '</div>' +
+  '</div></div>';
+}).join('');
+function scale(html){ return '<div class="pf" style="width:274px;height:382px">' + html + '</div>'; }
+table.addEventListener('click', function(e){
+  var t = e.target.closest('.thumb');
+  if (t) t.classList.toggle('flip');
+});
+function flipAll(front){
+  document.querySelectorAll('.thumb').forEach(function(t){
+    t.classList.toggle('flip', front);
+  });
+}
+/* 打印页：3×3，每页 9 张；背面页按行镜像，配合长边翻转双面打印 */
+function chunk(a,n){ var out=[]; for (var i=0;i<a.length;i+=n) out.push(a.slice(i,i+n)); return out; }
+function pageHtml(cards, mirror){
+  var rows = chunk(cards, 3);
+  if (mirror) rows = rows.map(function(r){ return r.slice().reverse(); });
+  return '<div class="pg">' + rows.reduce(function(m,r){ return m.concat(r); },[]).map(function(it){
+    return '<div class="cell">' + backHtml(it) + '</div>';
+  }).join('') + '</div>';
+}
+document.getElementById('sheetFronts').innerHTML = chunk(ITEMS,9).map(function(pg){
+  return '<div class="pg">' + pg.map(function(it){ return '<div class="cell">' + frontHtml(it) + '</div>'; }).join('') + '</div>';
+}).join('');
+document.getElementById('sheetBacks').innerHTML = chunk(ITEMS,9).map(function(pg){
+  return pageHtml(pg, true);
+}).join('');
+function doPrint(side){
+  document.body.classList.remove('print-fronts','print-backs');
+  document.body.classList.add(side==='backs' ? 'print-backs' : 'print-fronts');
+  window.print();
+}
+</script>
+</body>
+</html>
