@@ -28,40 +28,52 @@ h1 small{font-size:13px;color:#9a927d;font-weight:400;display:block;margin-top:6
 .thumb .f .pf,.thumb .b .pf{transform:scale(.343);transform-origin:0 0;width:274px;height:382px}
 /* ---------- 卡片本体 63×88mm ---------- */
 .card{width:274px;height:382px;position:relative}
-/* 背面：物资卡 */
-.card.back{background:#3f4438;border-radius:16px;padding:9px;box-shadow:inset 0 0 0 2px #2e3329}
-.card.back .paper{position:relative;height:100%;border-radius:9px;
-  background:radial-gradient(ellipse at 30% 20%,#efe4bd 0%,#e6d8a8 45%,#d9c68f 100%);color:#2b261a;
-  box-shadow:inset 0 0 26px rgba(120,90,40,.35);padding:12px 13px;display:flex;flex-direction:column}
-.plaque{background:linear-gradient(#5b584d,#454338);color:#efe4bd;border-radius:6px;padding:5px 8px;
-  font-size:16px;font-weight:700;letter-spacing:1px;text-align:center;box-shadow:inset 0 1px 0 #6e6a5c,0 1px 2px rgba(0,0,0,.4)}
+/* 背面：物资卡（做旧朦胧版） */
+.card.back{background:#4a4f41;border-radius:16px;padding:9px;box-shadow:inset 0 0 0 2px #3a3f33}
+.card.back .paper{position:relative;height:100%;border-radius:9px;overflow:hidden;
+  background:radial-gradient(ellipse at 32% 16%,#f3eac8 0%,#ecdfb2 45%,#ddca97 100%);color:#2b261a;
+  box-shadow:inset 0 0 34px rgba(120,90,40,.20);padding:12px 13px;display:flex;flex-direction:column}
+/* 朦胧罩：两团柔光 + 轻微雾感，让纸面不那么"锐" */
+.card.back .paper::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:9px;
+  background:
+    radial-gradient(ellipse at 78% 88%,rgba(255,252,238,.30),transparent 52%),
+    radial-gradient(ellipse at 12% 8%,rgba(255,255,246,.34),transparent 46%),
+    linear-gradient(rgba(255,252,240,.05),rgba(120,90,40,.05))}
+.plaque{background:linear-gradient(#6b6859,#504d41);color:#f0e7c3;border-radius:6px;padding:5px 8px;
+  font-size:16px;font-weight:700;letter-spacing:1px;text-align:center;box-shadow:inset 0 1px 0 #7d7a6a,0 1px 3px rgba(0,0,0,.28)}
 .plaque .tag{font-weight:400;font-size:13px}
-.illus{flex:0 0 108px;display:flex;align-items:center;justify-content:center;margin:6px 0 2px}
-.illus span{font-size:74px;filter:drop-shadow(3px 4px 3px rgba(60,40,10,.35))}
+.illus{flex:0 0 124px;display:flex;align-items:center;justify-content:center;margin:4px 0 2px}
+.illus span{font-size:96px;line-height:1;filter:drop-shadow(4px 7px 6px rgba(60,40,10,.30)) drop-shadow(0 0 14px rgba(255,250,225,.45))}
 .code{font-size:10px;letter-spacing:2px;color:#6b5f45;border-bottom:1.5px solid #6b5f45;padding:0 0 4px;margin-bottom:7px}
+/* 固定 8 槽：左列 饱食度/心情/营养/价值，右列 解渴/理智/卡路里/重量 —— 与模板卡一致 */
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;font-size:12.5px;font-weight:700;line-height:1.55}
 .stats .lbl{color:#2b261a}
 .stats .val{font-weight:700}
 .stats .plus{color:#3e8f2e;letter-spacing:1px}
 .stats .minus{color:#b42318;letter-spacing:1px}
+.stats .na{color:#a89a76;font-weight:400}
 .stats .unit{font-weight:400;font-size:11px}
 .stats div{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dotted #c4b183}
 .flavor{font-size:11.5px;line-height:1.7;color:#4a4030;border-top:1.5px solid #6b5f45;margin-top:8px;padding-top:7px;flex:1}
 .corner{position:absolute;top:6px;right:7px;font-size:15px;font-weight:800;color:#3a352a;opacity:.85;line-height:1.1;text-align:center}
 .corner.red{color:#a03028}
-/* 正面：扑克牌面 */
-.card.front{background:#f7f4ea;border-radius:12px;box-shadow:inset 0 0 0 2px #d9d2bd,0 1px 3px rgba(0,0,0,.4);color:#1d1b16}
-.card.front.red{color:#a03028}
-.pf-corner{position:absolute;top:8px;left:10px;font-size:26px;font-weight:800;line-height:1;text-align:center}
-.pf-corner b{display:block;font-size:24px}
-.pf-corner span{display:block;font-size:20px;margin-top:1px}
-.pf-corner.br{top:auto;left:auto;right:10px;bottom:8px;transform:rotate(180deg)}
-.pf-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}
-.pf-center .pip{font-size:96px;line-height:1}
-.pf-center .court{font-size:58px;font-weight:800;letter-spacing:2px}
-.pf-center .sub{font-size:12px;color:#8a826d;letter-spacing:1px}
-.pf-center .ace{font-size:120px}
-.pf-name{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:13px;font-weight:700;color:#6b6350;letter-spacing:1px}
+/* 正面：经典扑克牌面（白底 + 角标 + 标准 pip 排布） */
+.card.front{background:#fbfaf4;border-radius:12px;box-shadow:inset 0 0 0 2px #ddd6c1,0 1px 3px rgba(0,0,0,.4);color:#1d1b16}
+.card.front.red{color:#b03028}
+.pf-corner{position:absolute;top:7px;left:9px;font-size:15px;font-weight:800;line-height:1;text-align:center;letter-spacing:0}
+.pf-corner b{display:block;font-size:23px}
+.pf-corner span{display:block;font-size:19px;margin-top:1px}
+.pf-corner.br{top:auto;left:auto;right:9px;bottom:7px;transform:rotate(180deg)}
+.pipabs{position:absolute;transform:translate(-50%,-50%);font-size:34px;line-height:1}
+.pipabs.rot{transform:translate(-50%,-50%) rotate(180deg)}
+.pipabs.ace{font-size:112px}
+.court-frame{position:absolute;left:21%;right:21%;top:15%;bottom:17%;border:2.5px solid currentColor;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;
+  background:linear-gradient(160deg,rgba(0,0,0,.045),rgba(0,0,0,0) 55%)}
+.court-frame .big{font-size:74px;font-weight:800;line-height:1}
+.court-frame .csym{font-size:38px;line-height:1}
+.court-frame .jmask{font-size:78px;line-height:1}
+.pf-name{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:12px;font-weight:700;color:#8d8468;letter-spacing:2px}
 /* ---------- 打印 ---------- */
 .sheet{display:none}
 @media print{
@@ -140,7 +152,7 @@ const ITEMS = [
 {s:'s',r:'5',name:'人畜通用食品',tag:'未开封',emoji:'🐶',code:'10',
  stats:[['饱食度','++'],['理智','-5'],['心情','+'],['营养','+'],['特色','猫狗也能吃'],['价值','5 黑面包'],['重量','400 g'],['评价','战略物资']],
  flavor:'人能吃，狗也能吃，灾年里这就是双份保险。跟你的狗分着吃，它给你放哨，你给它一口，这买卖不亏。'},
-{s:'s',r:'4',name:'鹅肝酱罐头',tag:'俄式',emoji:'🥄',code:'11',
+{s:'s',r:'4',name:'鹅肝酱罐头',tag:'俄式',emoji:'🍯',code:'11',
  stats:[['饱食度','+'],['心情','+++'],['理智','+5'],['营养','++'],['特色','腥，但香'],['价值','7 黑面包'],['重量','120 g'],['评价','杀哥最爱']],
  flavor:'一打开腥味直冲天灵盖，抹在黑面包上居然是真香。末日里少有的体面食物，配茶包吃，能骗自己日子还过得去。'},
 {s:'s',r:'3',name:'「冰点毛桃」罐头',tag:'未开封',emoji:'🍑',code:'12',
@@ -196,7 +208,7 @@ const ITEMS = [
 {s:'d',r:'K',name:'PSP二代游戏机',tag:'完好',emoji:'🎮',code:'28',
  stats:[['回收价','60 元'],['约','30 黑面包'],['稀缺度','++'],['重量','190 g'],['风险','低'],['理智','+20'],['获取','黄金宝箱'],['评价','宝箱之王']],
  flavor:'宝箱里开出的最好的一件装备，卖了六十块，够半个月利息。游戏机这种东西，末日前是快乐，末日里是硬通货。'},
-{s:'d',r:'Q',name:'紫铜',tag:'来源要干净',emoji:'🟠',code:'29',
+{s:'d',r:'Q',name:'紫铜',tag:'来源要干净',emoji:'🥉',code:'29',
  stats:[['回收价','35 元/斤'],['约','17 黑面包'],['稀缺度','+++'],['重量','按斤'],['风险','高'],['理智','+5'],['来源','电缆·零件'],['评价','碰都别碰贼货']],
  flavor:'正常垃圾箱里根本捡不到铜。经常大量卖黄铜的，不是贩子就是工厂的，再不就是贼。看见成捆的电缆，转身就走——那不是宝箱，是陷阱。'},
 {s:'d',r:'J',name:'黄铜小雕像',tag:'垃圾箱开出',emoji:'🗿',code:'30',
@@ -217,7 +229,7 @@ const ITEMS = [
 {s:'d',r:'6',name:'硬纸壳',tag:'优质',emoji:'📦',code:'35',
  stats:[['回收价','1.2 元/公斤'],['约','0.6 黑面包'],['稀缺度','++'],['重量','按公斤'],['风险','低'],['理智','+2'],['特色','还能糊窗'],['评价','一物三用']],
  flavor:'硬的是优质纸壳，软的只能卖七毛，别掺一起坏了行情。卖不完的留着糊窗户、当床垫——破衣服纸壳子，就是流浪汉的席梦思。'},
-{s:'d',r:'5',name:'塑料瓶',tag:'农夫山泉优先',emoji:'💧',code:'36',
+{s:'d',r:'5',name:'塑料瓶',tag:'农夫山泉优先',emoji:'🧴',code:'36',
  stats:[['回收价','1毛/3个'],['约','0.15 黑面包'],['稀缺度','+++'],['重量','轻'],['风险','低'],['理智','+2'],['特色','按重量收'],['评价','铜币']],
  flavor:'矿泉水瓶是铜币，易拉罐是铝币。农夫山泉比别的瓶子都重些，同样十个多卖半毛。捡瓶子也要讲性价比，这是死知识里的活学问。'},
 {s:'d',r:'4',name:'铁块',tag:'1块3一斤',emoji:'⚙️',code:'37',
@@ -226,7 +238,7 @@ const ITEMS = [
 {s:'d',r:'3',name:'铁丝',tag:'6毛一斤',emoji:'🪝',code:'38',
  stats:[['回收价','6毛/斤'],['约','0.3 黑面包'],['稀缺度','+'],['重量','按斤'],['风险','中','刮手'],['理智','+2'],['特色','可改工具'],['评价','劳保先行']],
  flavor:'铁丝六毛一斤，价钱不高但缠手——处理时务必戴手套，玻璃和针头都爱跟它缠在一起。废品堆里受伤，流浪时期一场破伤风就要命。'},
-{s:'d',r:'2',name:'软纸壳',tag:'7毛',emoji:'🗑️',code:'39',
+{s:'d',r:'2',name:'软纸壳',tag:'7毛',emoji:'📄',code:'39',
  stats:[['回收价','7毛/公斤'],['约','0.35 黑面包'],['稀缺度','+++'],['重量','轻'],['风险','低'],['理智','+2'],['特色','量大'],['评价','保底收入']],
  flavor:'软纸壳不值钱，好在量大管饱。收废品的按公斤算，你按楼道算。积少成多，末日经济学第一课。'},
 /* ===== 梅花 ♣ 生存工具 ===== */
@@ -248,7 +260,7 @@ const ITEMS = [
 {s:'c',r:'9',name:'易拉罐警报器',tag:'自制',emoji:'🔔',code:'45',
  stats:[['耐久','++'],['便携','++'],['获取','自制'],['理智','+15'],['交换价值','1 黑面包'],['重量','400 g'],['场景','庇护所外围'],['评价','哨兵']],
  flavor:'石子装进易拉罐，麻线穿过拉环，按间隔串起来，挂在出口处。装满石子的罐子一响，你就该绷紧神经——准备战斗，或者溜之大吉。'},
-{s:'c',r:'8',name:'单人净水器',tag:'自制',emoji:'💧',code:'46',
+{s:'c',r:'8',name:'单人净水器',tag:'自制',emoji:'🚰',code:'46',
  stats:[['耐久','+++'],['便携','+++'],['获取','自制'],['理智','+20'],['交换价值','5 黑面包'],['重量','200 g'],['材料','瓶·棉·炭·沙'],['评价','续命装备']],
  flavor:'塑料瓶切割做漏斗，瓶口棉花、中层木炭、底层沙子，一层压一层。木炭必须是木头烧的。水！水！水！末日第一优先级。'},
 {s:'c',r:'7',name:'砖头土灶',tag:'留缝隙',emoji:'🧱',code:'47',
@@ -281,37 +293,85 @@ const ITEMS = [
 const SUIT = {s:{sym:'♠',cls:'',label:'军粮与罐头'},h:{sym:'♥',cls:'red',label:'废土热乎饭'},d:{sym:'♦',cls:'red',label:'换钱装备'},c:{sym:'♣',cls:'',label:'生存工具'}};
 
 /* ---------------- 渲染 ---------------- */
-function statsHtml(st){
-  return '<div class="stats">' + st.map(function(p){
-    var v = String(p[1]);
-    var cls = v[0]==='+' ? 'plus' : (v[0]==='-' ? 'minus' : '');
-    return '<div><span class="lbl">' + p[0] + '</span><span class="val ' + cls + '">' + v.replace(/^\+/,'') + '</span></div>';
-  }).join('') + '</div>';
+/* 固定 8 槽（与「冰点毛桃」模板卡完全一致）：
+ * 左列上→下：饱食度 / 心情 / 营养 / 价值；右列上→下：解渴 / 理智 / 卡路里 / 重量
+ * 网格按行填充：饱食度, 解渴, 心情, 理智, 营养, 卡路里, 价值, 重量 */
+var SLOTS = ['饱食度','解渴','心情','理智','营养','卡路里','价值','重量'];
+function fixedStats(it){
+  var m = {};
+  (it.stats || []).forEach(function (p) { if (m[p[0]] === undefined) m[p[0]] = p[1]; });
+  /* 各卡历史标签归并到固定槽 */
+  if (m['开心'] !== undefined && m['心情'] === undefined) m['心情'] = m['开心'];
+  if (m['热量'] !== undefined && m['卡路里'] === undefined) m['卡路里'] = m['热量'];
+  /* 价值：黑面包本位优先；方块卡的回收价折进风味文字，不占固定槽 */
+  var val = m['约'] || m['价值'] || m['交换价值'] || '—';
+  var flavor = it.flavor;
+  if (m['回收价'] && m['约']) flavor = '回收价 ' + m['回收价'] + '。' + flavor;
+  else if (m['回收价']) val = m['回收价'];
+  var out = {};
+  SLOTS.forEach(function (k) { out[k] = m[k] !== undefined ? m[k] : '—'; });
+  out['价值'] = val;
+  out._flavor = flavor;
+  return out;
+}
+function valHtml(v){
+  var s = String(v);
+  if (s === '—') return '<span class="val na">—</span>';
+  var cls = s[0] === '+' ? 'plus' : (s[0] === '-' ? 'minus' : '');
+  return '<span class="val ' + cls + '">' + s.replace(/^\+/, '') + '</span>';
 }
 function backHtml(it){
   var s = it.s==='BJ'||it.s==='SJ' ? {sym:'★',cls:'red'} : SUIT[it.s];
+  var f = fixedStats(it);
   return '<div class="card back">' +
     '<div class="corner ' + s.cls + '">' + s.sym + '<br>' + it.r + '</div>' +
     '<div class="paper">' +
       '<div class="plaque">「' + it.name + '」<span class="tag">[ ' + it.tag + ' ]</span></div>' +
       '<div class="illus"><span>' + it.emoji + '</span></div>' +
       '<div class="code">20261110-' + it.code + '</div>' +
-      statsHtml(it.stats) +
-      '<div class="flavor">' + it.flavor + '</div>' +
+      '<div class="stats">' +
+        SLOTS.map(function (k) {
+          return '<div><span class="lbl">' + k + '</span>' + valHtml(f[k]) + '</div>';
+        }).join('') +
+      '</div>' +
+      '<div class="flavor">' + f._flavor + '</div>' +
     '</div></div>';
 }
+/* 经典扑克点数排布：[x%, y%, 是否倒置]；下半部分的 pip 按传统倒过来 */
+var LAY = {
+  'A':[[50,50,0]],
+  '2':[[50,18],[50,82,1]],
+  '3':[[50,18],[50,50],[50,82,1]],
+  '4':[[29,18],[71,18],[29,82,1],[71,82,1]],
+  '5':[[29,18],[71,18],[50,50],[29,82,1],[71,82,1]],
+  '6':[[29,18],[71,18],[29,50],[71,50],[29,82,1],[71,82,1]],
+  '7':[[29,18],[71,18],[50,34],[29,50],[71,50],[29,82,1],[71,82,1]],
+  '8':[[29,18],[71,18],[50,34],[29,50],[71,50],[50,66,1],[29,82,1],[71,82,1]],
+  '9':[[29,18],[71,18],[29,39],[71,39],[50,50],[29,61,1],[71,61,1],[29,82,1],[71,82,1]],
+  '10':[[29,18],[71,18],[50,29],[29,39],[71,39],[29,61,1],[71,61,1],[50,71,1],[29,82,1],[71,82,1]]
+};
 function frontHtml(it){
-  var s = it.s==='BJ'||it.s==='SJ' ? {sym:'★',cls:'red',label:'王'} : SUIT[it.s];
-  var court = ['K','Q','J'].indexOf(it.r) >= 0;
-  var center;
-  if (it.r === 'A') center = '<div class="pip ace">' + s.sym + '</div><div class="sub">' + it.name + '</div>';
-  else if (court) center = '<div class="court">' + it.r + '</div><div class="pip" style="font-size:44px">' + s.sym + '</div><div class="sub">' + it.name + '</div>';
-  else center = '<div class="pip">' + s.sym + '</div><div class="sub">' + it.r + ' · ' + it.name + '</div>';
+  var joker = it.s==='BJ'||it.s==='SJ';
+  var s = joker ? {sym:'★',cls:'red',label:'废土物资 · 王'} : SUIT[it.s];
+  var inner;
+  if (joker) {
+    inner = '<div class="court-frame"><div class="jmask">🎭</div>' +
+      '<div style="font-size:15px;font-weight:800;letter-spacing:3px">JOKER</div>' +
+      '<div style="font-size:13px">' + it.name + ' · ' + it.tag + '</div></div>';
+  } else if (it.r === 'A') {
+    inner = '<div class="pipabs ace" style="left:50%;top:47%">' + s.sym + '</div>';
+  } else if (LAY[it.r]) {
+    inner = LAY[it.r].map(function (p) {
+      return '<div class="pipabs' + (p[2] ? ' rot' : '') + '" style="left:' + p[0] + '%;top:' + p[1] + '%">' + s.sym + '</div>';
+    }).join('');
+  } else { /* K / Q / J 宫廷牌：字 + 花色 + 装饰框 */
+    inner = '<div class="court-frame"><div class="big">' + it.r + '</div><div class="csym">' + s.sym + '</div></div>';
+  }
   return '<div class="card front ' + s.cls + '">' +
     '<div class="pf-corner"><b>' + it.r + '</b><span>' + s.sym + '</span></div>' +
     '<div class="pf-corner br"><b>' + it.r + '</b><span>' + s.sym + '</span></div>' +
-    '<div class="pf-center">' + center + '</div>' +
-    '<div class="pf-name">' + s.label + '</div>' +
+    inner +
+    '<div class="pf-name">' + (joker ? s.label : s.label + ' · ' + it.name) + '</div>' +
   '</div>';
 }
 /* 屏显桌面：默认亮背面（物资卡），点击翻到牌面 */
