@@ -55,6 +55,7 @@ h1 small{font-size:13px;color:#9a927d;font-weight:400;display:block;margin-top:6
 .stats .unit{font-weight:400;font-size:11px}
 .stats div{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dotted #c4b183}
 .flavor{font-size:11.5px;line-height:1.7;color:#4a4030;border-top:1.5px solid #6b5f45;margin-top:8px;padding-top:7px;flex:1}
+.flavor.sm{font-size:10.2px;line-height:1.55}
 .corner{position:absolute;top:6px;right:7px;font-size:15px;font-weight:800;color:#3a352a;opacity:.85;line-height:1.1;text-align:center}
 .corner.red{color:#a03028}
 /* 正面：经典扑克牌面（白底 + 角标 + 标准 pip 排布） */
@@ -284,14 +285,14 @@ const ITEMS = [
 /* ===== 王 ===== */
 {s:'BJ',r:'大王',name:'小丑面具',tag:'笑脸',emoji:'🎭',code:'53',
  stats:[['理智','+50'],['心情','∞'],['耐久','++'],['便携','++++'],['获取','初始装备'],['重量','50 g'],['特色','匿名'],['评价','本命装备']],
- flavor:'当他戴上小丑面具的那一刻，大伙都悟了：有人发现面具是一张笑脸。没人知道面具下面是谁，这就够了。末日最贵的装备，是一张让人认不出你的脸。'},
+ flavor:'有人发现面具是一张笑脸。没人知道面具下面是谁，这就够了。'},
 {s:'SJ',r:'小王',name:'小丑面具',tag:'泪水',emoji:'😞',code:'54',
  stats:[['理智','+30'],['心情','-10'],['耐久','++'],['便携','++++'],['获取','初始装备'],['重量','50 g'],['特色','真实'],['评价','背面刻着'],
  ],
- flavor:'有人看到面具背后有泪水在流淌。至于面具后面的人看到什么，我不清楚。卖过房帮过兄弟，摸过狗熊救过猫狗——笑是给世界的，泪是自己的。'},
+ flavor:'有人看到面具背后有泪水在流淌。至于面具后面的人看到什么，我不清楚。'},
 {s:'EX',r:'EX',name:'艾丽莎',tag:'非卖品',emoji:'👧',code:'55',
  stats:[['饱食度','—'],['解渴','—'],['心情','+++'],['SAN值','∞'],['营养','—'],['卡路里','—'],['价值','非卖品'],['重量','0 g']],
- flavor:'小丑骑士丢掉了自己的荣誉之斧，也失去了爱情。废土上什么都捡得到，唯独这个人捡不回来。她不在任何宝箱里，只在那段讲完的故事里。牌堆里唯一的非卖品。'}
+ flavor:'小丑骑士丢掉了自己的荣誉之斧，也失去了爱情。废土上什么都捡得到，唯独这个人捡不回来。'}
 ];
 const SUIT = {s:{sym:'♠',cls:'',label:'军粮与罐头'},h:{sym:'♥',cls:'red',label:'废土热乎饭'},d:{sym:'♦',cls:'red',label:'换钱装备'},c:{sym:'♣',cls:'',label:'生存工具'}};
 
@@ -339,7 +340,7 @@ function backHtml(it){
           return '<div><span class="lbl">' + k + '</span>' + valHtml(f[k]) + '</div>';
         }).join('') +
       '</div>' +
-      '<div class="flavor">' + f._flavor + '</div>' +
+      '<div class="flavor' + (f._flavor.length > 60 ? ' sm' : '') + '">' + f._flavor + '</div>' +
     '</div></div>';
 }
 /* 经典扑克点数排布：[x%, y%, 是否倒置]；下半部分的 pip 按传统倒过来 */
