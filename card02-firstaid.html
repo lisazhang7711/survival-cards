@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>应急卡 02 · 家庭急救</title>
+<style>
+
+:root{
+  --paper:#fffdf6; --paper2:#35422a;
+  --ink:#23201a; --ink2:#5d5748; --ink3:#8a8271;
+  --onDark:#ece6d6; --onDark2:#b7b09a;
+  --olive:#55683a; --olive-d:#3c4b28; --amber:#a8641c; --red:#8c2f1d;
+  --water:#3f6b7d; --line:#d8d0bc;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#efece3;color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+  display:flex;flex-direction:column;align-items:center;padding:22px 14px 36px;gap:12px}
+
+/* ---------- 卡片 68 × 95 mm ---------- */
+.card{
+  width:68mm;height:95mm;position:relative;overflow:hidden;
+  border-radius:2.5mm;padding:4.6mm 5.2mm 4mm;display:flex;flex-direction:column;
+  box-shadow:0 2px 14px rgba(80,70,40,.16);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.front{background:var(--paper);color:var(--ink);
+  background-image:radial-gradient(rgba(180,168,140,.13) .8px,transparent .8px);
+  background-size:3.4mm 3.4mm}
+.back{background:var(--paper2);color:var(--onDark)}
+
+/* 通用头部 */
+.hd{display:flex;align-items:baseline;gap:2mm;padding-bottom:1.8mm}
+.front .hd{border-bottom:.7mm solid var(--accent)}
+.back .hd{border-bottom:.5mm solid rgba(236,230,214,.35)}
+.no{font-size:8pt;font-weight:700;color:#fff;border-radius:1mm;padding:.4mm 1.4mm;letter-spacing:.5px}
+.front .no{background:var(--accent)}
+.back .no{background:transparent;border:.4mm solid var(--onDark);color:var(--onDark)}
+.tt{font-size:12pt;font-weight:700;letter-spacing:.6px;line-height:1}
+.en{margin-left:auto;font-size:6pt;letter-spacing:1px;opacity:.65}
+.sub{font-size:7pt;line-height:1.75;margin:2.2mm 0 0}
+.front .sub{color:var(--ink2)}
+.back .sub{color:var(--onDark2)}
+
+/* ---------- 正面：主干五步 ---------- */
+.flow{flex:1;display:flex;flex-direction:column;justify-content:center;gap:4.2mm;margin-top:1.5mm}
+.st{display:flex;gap:2.2mm;align-items:center}
+.st .k{flex:none;width:4.2mm;height:4.2mm;border-radius:50%;background:var(--accent);color:#fff;
+  font-size:6.6pt;font-weight:700;display:flex;align-items:center;justify-content:center}
+.st .t{font-size:8.6pt;font-weight:700;letter-spacing:.3px;flex:none}
+.st .d{font-size:7.6pt;color:var(--ink2);line-height:1.7}
+
+.warn{border:.5mm solid var(--red);border-radius:1.4mm;padding:1.4mm 1.6mm;margin-top:3mm;
+  background:rgba(140,47,29,.05)}
+.warn .wt{font-size:6.6pt;font-weight:700;color:var(--red);letter-spacing:.4px;margin-bottom:.4mm}
+.warn .wd{font-size:6.8pt;color:var(--ink2);line-height:1.7}
+
+.ft{margin-top:auto;padding-top:1.2mm;display:flex;justify-content:space-between;align-items:center;
+  font-size:5.4pt}
+.front .ft{border-top:.3mm dashed var(--line);color:var(--ink3)}
+.back .ft{border-top:.3mm dashed rgba(236,230,214,.28);color:var(--onDark2)}
+.flip{font-size:5.4pt;color:var(--ink3);opacity:.9}
+
+/* ---------- 背面：详解 ---------- */
+.detail{flex:1;margin-top:2mm;display:flex;flex-direction:column;gap:2mm}
+.blk .bt{font-size:7pt;font-weight:700;color:#e8d9b4;letter-spacing:.4px;margin-bottom:1mm}
+.blk .bd{font-size:6.2pt;line-height:1.5;color:var(--onDark)}
+.blk .bd em{font-style:normal;color:#fff;font-weight:600}
+.blk .bd .ar{color:#a8c0c9}
+.sec{margin-top:.4mm}
+
+.danger{border-left:.8mm solid #d98b6a;padding-left:1.6mm;margin-top:.6mm}
+.danger .bd{color:#f0cdbd}
+
+/* ---------- 二维码 ---------- */
+.qrs{display:flex;gap:3mm;justify-content:center;margin-top:2.4mm}
+.qr{flex:none;width:18mm;background:#f6f2e6;border-radius:1.6mm;padding:1.3mm 1.3mm .9mm;
+  text-align:center}
+.qr .img{width:13.5mm;height:13.5mm;margin:0 auto}
+.qr .im{font-size:5.2pt;font-weight:700;color:#23201a;letter-spacing:.2px;margin-top:.8mm;line-height:1.25}
+.qr .iu{font-size:4.6pt;color:#6b6455;line-height:1.3;margin-top:.3mm;word-break:break-all}
+
+/* ---------- 控件 ---------- */
+.bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+button{background:var(--olive);color:#fff;border:0;border-radius:6px;padding:7px 15px;
+  font-size:13px;cursor:pointer;font-family:inherit}
+button:hover{background:var(--olive-d)}
+button.gh{background:transparent;color:var(--ink2);border:1px solid #c8bfab}
+button.gh:hover{background:#e3ddcd}
+.tip{font-size:12px;color:#7b7462;max-width:460px;text-align:center;line-height:1.6}
+
+@media print{
+  body{background:#fff;padding:0;display:block}
+  .bar,.tip{display:none}
+  .card{box-shadow:none;border-radius:0}
+  .front{page-break-after:always}
+  @page{size:68mm 95mm;margin:0}
+}
+
+</style>
+</head>
+<body>
+
+<div class="card front" id="front" style="--accent:#8c2f1d">
+  <div class="hd">
+    <span class="no">02</span>
+    <span class="tt">家庭急救</span>
+    <span class="en">FIRST AID</span>
+  </div>
+  <div class="sub">先救命再治伤。顺序错了，血止得再快也没用。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">呼吸</div><div class="d">清口腔异物，无呼吸即吹气</div></div>
+      <div class="st"><div class="k">2</div><div class="t">止血</div><div class="d">干净布压迫 10 分钟别松手</div></div>
+      <div class="st"><div class="k">3</div><div class="t">休克</div><div class="d">平躺垫高下肢保暖，不喂水</div></div>
+      <div class="st"><div class="k">4</div><div class="t">清创</div><div class="d">煮沸放凉的水大量冲洗</div></div>
+      <div class="st"><div class="k">5</div><div class="t">包扎</div><div class="d">干净敷料覆盖，保持干燥</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">深锈器伤口防破伤风；红线跳痛化脓即感染扩散</div>
+  </div>
+
+  <div class="ft">
+    <span>怀斯曼生存手册 第八章 p.281 · 文明重建手册 医疗药物类</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+
+<div class="card back" id="back">
+  <div class="hd">
+    <span class="no">02</span>
+    <span class="tt">家庭急救 · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① 顺序不能乱</div>
+      <div class="bd">
+        呼吸道与呼吸 → 出血 → 休克 → 最后才是骨折固定、烧伤降温、清创包扎
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">② 止血</div>
+      <div class="bd">
+        直接压迫是第一手段，压住 <em>10 分钟</em>不松手，别反复掀开看<br>四肢大出血才用止血带，记时间，每小时松 1 次
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">③ 伤口清洗</div>
+      <div class="bd">
+        煮沸后放凉的水或生理盐水大量冲洗，把污物冲出来<br>不要用酒精、碘酒直接灌深部伤口
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">④ 观察与搬运</div>
+      <div class="bd">
+        检查意识用轻拍重唤；疑似脊柱伤搬运必须头颈躯干同轴<br>除非环境有二次危险，否则不要移动伤者
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+
+<div class="bar">
+  <button onclick="window.print()">打印 / 存为 PDF（双面）</button>
+  <button class="gh" onclick="dl('front')">下载正面 PNG</button>
+  <button class="gh" onclick="dl('back')">下载背面 PNG</button>
+</div>
+<div class="tip">卡片 68 × 95 mm（扑克牌 63×88 等比放大）。打印时页边距设为「无」，双面选「短边翻转」。</div>
+
+<script>
+function dl(which){
+  const card = document.getElementById(which);
+  const w = card.offsetWidth, h = card.offsetHeight;
+  const style = Array.from(document.querySelectorAll('style')).map(s=>s.textContent).join('\n');
+  const html = '<div xmlns="http://www.w3.org/1999/xhtml"><style>'+style+'</style>'+card.outerHTML+'</div>';
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+    + '<foreignObject width="100%" height="100%">'+html+'</foreignObject></svg>';
+  const img = new Image();
+  img.onload = function(){
+    const s = 3, cv = document.createElement('canvas');
+    cv.width = w*s; cv.height = h*s;
+    const cx = cv.getContext('2d');
+    cx.fillStyle = (which==='front') ? '#fffdf6' : '#35422a';
+    cx.fillRect(0,0,cv.width,cv.height);
+    cx.scale(s,s); cx.drawImage(img,0,0);
+    const a = document.createElement('a');
+    a.download = '应急卡02-家庭急救-' + (which==='front'?'正面':'背面') + '.png';
+    a.href = cv.toDataURL('image/png'); a.click();
+  };
+  img.onerror = function(){ alert('PNG 导出失败，请用「打印 / 存为 PDF」。'); };
+  img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+</script>
+</body>
+</html>

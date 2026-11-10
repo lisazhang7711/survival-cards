@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>应急卡全套 · 12 面合并版</title>
+<style>
+
+
+:root{
+  --paper:#fffdf6; --paper2:#35422a;
+  --ink:#23201a; --ink2:#5d5748; --ink3:#8a8271;
+  --onDark:#ece6d6; --onDark2:#b7b09a;
+  --olive:#55683a; --olive-d:#3c4b28; --amber:#a8641c; --red:#8c2f1d;
+  --water:#3f6b7d; --line:#d8d0bc;
+}
+*{box-sizing:border-box}
+
+/* ---------- 卡片 68 × 95 mm ---------- */
+.card{
+  width:68mm;height:95mm;position:relative;overflow:hidden;
+  border-radius:2.5mm;padding:4.6mm 5.2mm 4mm;display:flex;flex-direction:column;
+  box-shadow:0 2px 14px rgba(80,70,40,.16);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.front{background:var(--paper);color:var(--ink);
+  background-image:radial-gradient(rgba(180,168,140,.13) .8px,transparent .8px);
+  background-size:3.4mm 3.4mm}
+.back{background:var(--paper2);color:var(--onDark)}
+
+/* 通用头部 */
+.hd{display:flex;align-items:baseline;gap:2mm;padding-bottom:1.8mm}
+.front .hd{border-bottom:.7mm solid var(--accent)}
+.back .hd{border-bottom:.5mm solid rgba(236,230,214,.35)}
+.no{font-size:8pt;font-weight:700;color:#fff;border-radius:1mm;padding:.4mm 1.4mm;letter-spacing:.5px}
+.front .no{background:var(--accent)}
+.back .no{background:transparent;border:.4mm solid var(--onDark);color:var(--onDark)}
+.tt{font-size:12pt;font-weight:700;letter-spacing:.6px;line-height:1}
+.en{margin-left:auto;font-size:6pt;letter-spacing:1px;opacity:.65}
+.sub{font-size:7pt;line-height:1.75;margin:2.2mm 0 0}
+.front .sub{color:var(--ink2)}
+.back .sub{color:var(--onDark2)}
+
+/* ---------- 正面：主干五步 ---------- */
+.flow{flex:1;display:flex;flex-direction:column;justify-content:center;gap:4.2mm;margin-top:1.5mm}
+.st{display:flex;gap:2.2mm;align-items:center}
+.st .k{flex:none;width:4.2mm;height:4.2mm;border-radius:50%;background:var(--accent);color:#fff;
+  font-size:6.6pt;font-weight:700;display:flex;align-items:center;justify-content:center}
+.st .t{font-size:8.6pt;font-weight:700;letter-spacing:.3px;flex:none}
+.st .d{font-size:7.6pt;color:var(--ink2);line-height:1.7}
+
+.warn{border:.5mm solid var(--red);border-radius:1.4mm;padding:1.4mm 1.6mm;margin-top:3mm;
+  background:rgba(140,47,29,.05)}
+.warn .wt{font-size:6.6pt;font-weight:700;color:var(--red);letter-spacing:.4px;margin-bottom:.4mm}
+.warn .wd{font-size:6.8pt;color:var(--ink2);line-height:1.7}
+
+.ft{margin-top:auto;padding-top:1.2mm;display:flex;justify-content:space-between;align-items:center;
+  font-size:5.4pt}
+.front .ft{border-top:.3mm dashed var(--line);color:var(--ink3)}
+.back .ft{border-top:.3mm dashed rgba(236,230,214,.28);color:var(--onDark2)}
+.flip{font-size:5.4pt;color:var(--ink3);opacity:.9}
+
+/* ---------- 背面：详解 ---------- */
+.detail{flex:1;margin-top:2mm;display:flex;flex-direction:column;gap:2mm}
+.blk .bt{font-size:7pt;font-weight:700;color:#e8d9b4;letter-spacing:.4px;margin-bottom:1mm}
+.blk .bd{font-size:6.2pt;line-height:1.5;color:var(--onDark)}
+.blk .bd em{font-style:normal;color:#fff;font-weight:600}
+.blk .bd .ar{color:#a8c0c9}
+.sec{margin-top:.4mm}
+
+.danger{border-left:.8mm solid #d98b6a;padding-left:1.6mm;margin-top:.6mm}
+.danger .bd{color:#f0cdbd}
+
+/* ---------- 二维码 ---------- */
+.qrs{display:flex;gap:3mm;justify-content:center;margin-top:2.4mm}
+.qr{flex:none;width:18mm;background:#f6f2e6;border-radius:1.6mm;padding:1.3mm 1.3mm .9mm;
+  text-align:center}
+.qr .img{width:13.5mm;height:13.5mm;margin:0 auto}
+.qr .im{font-size:5.2pt;font-weight:700;color:#23201a;letter-spacing:.2px;margin-top:.8mm;line-height:1.25}
+.qr .iu{font-size:4.6pt;color:#6b6455;line-height:1.3;margin-top:.3mm;word-break:break-all}
+
+/* ---------- 控件 ---------- */
+.bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+button{background:var(--olive);color:#fff;border:0;border-radius:6px;padding:7px 15px;
+  font-size:13px;cursor:pointer;font-family:inherit}
+button:hover{background:var(--olive-d)}
+button.gh{background:transparent;color:var(--ink2);border:1px solid #c8bfab}
+button.gh:hover{background:#e3ddcd}
+.tip{font-size:12px;color:#7b7462;max-width:460px;text-align:center;line-height:1.6}
+
+
+
+
+
+/* ---------- 合并页外壳 ---------- */
+body{background:#efe9dc;padding:18px 12px 40px;
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto}
+.bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
+button{background:var(--olive);color:#fff;border:0;border-radius:6px;padding:7px 15px;
+  font-size:13px;cursor:pointer;font-family:inherit}
+button.gh{background:transparent;color:var(--ink2);border:1px solid #c8bfab}
+.tip{font-size:12px;color:#7b7462;max-width:620px;margin:6px auto 16px;text-align:center;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;justify-items:center}
+.face{display:flex;flex-direction:column;align-items:center;gap:5px}
+.cap{font-size:11px;color:#8a8270;letter-spacing:.3px}
+.card{box-shadow:0 2px 12px rgba(80,70,40,.18)}
+
+@media print{
+  body{background:#fff;padding:0}
+  .bar,.tip,.cap{display:none}
+  .grid{display:block}
+  .face{display:block;page-break-after:always;break-after:page}
+  .face:last-child{page-break-after:auto;break-after:auto}
+  .card{box-shadow:none;border-radius:0;margin:0}
+  @page{size:68mm 95mm;margin:0}
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <button onclick="window.print()">打印 / 存为 PDF（12 页）</button>
+  </div>
+  <div class="tip">
+    6 张卡 × 正反两面 = 12 面，已按 <b>01正 / 01反 / 02正 / 02反 …</b> 排序。<br>
+    打印：纸张 68 × 95 mm（选「无边距」），双面选<b>「短边翻转」</b>，勾选<b>「背景图形」</b>——否则背面深橄榄底印不出来。<br>
+    顺序对好之后，第 1 页背面就是第 2 页，直接两面成对。
+  </div>
+  <div class="grid">
+    <div class="face">
+<div class="card front" id="front" style="--accent:#8a5a1c">
+  <div class="hd">
+    <span class="no">01</span>
+    <span class="tt">断水断电 72h</span>
+    <span class="en">BLACKOUT</span>
+  </div>
+  <div class="sub">头 72 小时按时间管，不按心情管。先保住冰箱和照明，再谈别的。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">冰箱</div><div class="d">别开门·冷藏 4 h·冷冻 48 h</div></div>
+      <div class="st"><div class="k">2</div><div class="t">吃序</div><div class="d">先吃易坏的，米面罐头最后</div></div>
+      <div class="st"><div class="k">3</div><div class="t">照明</div><div class="d">手电与头灯优先，少用蜡烛</div></div>
+      <div class="st"><div class="k">4</div><div class="t">用电</div><div class="d">先充手机与电台</div></div>
+      <div class="st"><div class="k">5</div><div class="t">备水</div><div class="d">每人每天 3 L，接满容器</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">炭火、发电机必放室外——一氧化碳无色无味能致命</div>
+  </div>
+
+  <div class="ft">
+    <span>文明重建手册 · 电力能源 / 电子技术类</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+      <div class="cap">1 · 01 断水断电 72h · 正面</div>
+    </div>
+    <div class="face">
+<div class="card back" style="--accent:#8a5a1c" id="back">
+  <div class="hd">
+    <span class="no">01</span>
+    <span class="tt">断水断电 72h · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① 冰箱能撑多久</div>
+      <div class="bd">
+        冷藏密闭 <em>4 小时</em>；冷冻满箱 48 小时、半箱仅 24 小时<br>停电期间尽量不开门，开一次掉一半
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">② 吃的顺序</div>
+      <div class="bd">
+        先清冷藏易坏 → 根茎类与蛋 → 米面豆罐头最后<br>发黏、酸味、胀罐、霉斑 → 直接丢，不要尝
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">③ 照明与电</div>
+      <div class="bd">
+        LED 手电 + 头灯优先，白墙反光可一灯两用<br>先充手机与电台；发电机必须放室外下风向
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">④ 用电记账</div>
+      <div class="bd">
+        按瓦时记：设备功率 × 小时数，先算再决定开不开
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+      <div class="cap">2 · 01 断水断电 72h · 背面</div>
+    </div>
+    <div class="face">
+<div class="card front" id="front" style="--accent:#8c2f1d">
+  <div class="hd">
+    <span class="no">02</span>
+    <span class="tt">家庭急救</span>
+    <span class="en">FIRST AID</span>
+  </div>
+  <div class="sub">先救命再治伤。顺序错了，血止得再快也没用。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">呼吸</div><div class="d">清口腔异物，无呼吸即吹气</div></div>
+      <div class="st"><div class="k">2</div><div class="t">止血</div><div class="d">干净布压迫 10 分钟别松手</div></div>
+      <div class="st"><div class="k">3</div><div class="t">休克</div><div class="d">平躺垫高下肢保暖，不喂水</div></div>
+      <div class="st"><div class="k">4</div><div class="t">清创</div><div class="d">煮沸放凉的水大量冲洗</div></div>
+      <div class="st"><div class="k">5</div><div class="t">包扎</div><div class="d">干净敷料覆盖，保持干燥</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">深锈器伤口防破伤风；红线跳痛化脓即感染扩散</div>
+  </div>
+
+  <div class="ft">
+    <span>怀斯曼生存手册 第八章 p.281 · 文明重建手册 医疗药物类</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+      <div class="cap">3 · 02 家庭急救 · 正面</div>
+    </div>
+    <div class="face">
+<div class="card back" style="--accent:#8c2f1d" id="back">
+  <div class="hd">
+    <span class="no">02</span>
+    <span class="tt">家庭急救 · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① 顺序不能乱</div>
+      <div class="bd">
+        呼吸道与呼吸 → 出血 → 休克 → 最后才是骨折固定、烧伤降温、清创包扎
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">② 止血</div>
+      <div class="bd">
+        直接压迫是第一手段，压住 <em>10 分钟</em>不松手，别反复掀开看<br>四肢大出血才用止血带，记时间，每小时松 1 次
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">③ 伤口清洗</div>
+      <div class="bd">
+        煮沸后放凉的水或生理盐水大量冲洗，把污物冲出来<br>不要用酒精、碘酒直接灌深部伤口
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">④ 观察与搬运</div>
+      <div class="bd">
+        检查意识用轻拍重唤；疑似脊柱伤搬运必须头颈躯干同轴<br>除非环境有二次危险，否则不要移动伤者
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+      <div class="cap">4 · 02 家庭急救 · 背面</div>
+    </div>
+    <div class="face">
+<div class="card front" id="front" style="--accent:#3f6b7d">
+  <div class="hd">
+    <span class="no">03</span>
+    <span class="tt">净水决策树</span>
+    <span class="en">WATER</span>
+  </div>
+  <div class="sub">喝之前让水过这 5 关。顺序不能颠倒——先去浑浊，再杀菌。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">取水</div><div class="d">流动水优先；避开下游 50 m 污染源</div></div>
+      <div class="st"><div class="k">2</div><div class="t">沉淀</div><div class="d">浑浊就静置 2–12 h，取上层清液</div></div>
+      <div class="st"><div class="k">3</div><div class="t">过滤</div><div class="d">粗砂 → 细砂 → 木炭 → 细砂</div></div>
+      <div class="st"><div class="k">4</div><div class="t">消毒</div><div class="d">沸腾 1 分钟，或日晒 6 小时</div></div>
+      <div class="st"><div class="k">5</div><div class="t">存水</div><div class="d">加盖避光，新旧水不混装</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">不喝海水、不喝尿——盐分会加速脱水。</div>
+  </div>
+
+  <div class="ft">
+    <span>文明重建手册 · 怀斯曼生存手册</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+      <div class="cap">5 · 03 净水决策树 · 正面</div>
+    </div>
+    <div class="face">
+<div class="card back" style="--accent:#3f6b7d" id="back">
+  <div class="hd">
+    <span class="no">03</span>
+    <span class="tt">净水决策树 · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① 取水顺序</div>
+      <div class="bd">
+        雨水 / 屋顶径流 <span class="ar">→</span> 露水 <span class="ar">→</span> 流动溪流<br><span class="ar">→</span> 兽径汇合处 · 蜂群方向 · 清晨鸟群飞向 · 蒸腾袋 · 蒸馏坑
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">②③ 沉淀与过滤</div>
+      <div class="bd">
+        浑浊：静置 <em>2–12 h</em>，只取上层清液；本来就清直接过滤<br>过滤：粗砂 <span class="ar">→</span> 细砂 <span class="ar">→</span> <em>碎木炭</em> <span class="ar">→</span> 细砂，重复 <em>2–3 遍</em>
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">④ 消毒（不能省）</div>
+      <div class="bd">
+        能生火：沸腾 <em>1 分钟</em>（海拔每升 1000 m 加 1 分钟）<br>没燃料：澄清后装透明瓶日晒 <em>6 小时</em>；没锅用烧石或冷凝
+      </div>
+    </div>
+    <div class="blk danger">
+      <div class="bt">数量与禁忌</div>
+      <div class="bd">
+        成人日需约 <em>3 L</em>（含饮用与清洁）；大量出汗必补盐，约 <em>5 g/天</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+      <div class="cap">6 · 03 净水决策树 · 背面</div>
+    </div>
+    <div class="face">
+<div class="card front" id="front" style="--accent:#6d4b32">
+  <div class="hd">
+    <span class="no">04</span>
+    <span class="tt">地震</span>
+    <span class="en">QUAKE</span>
+  </div>
+  <div class="sub">震动只有十几秒，动作必须是不用想的。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">室内</div><div class="d">伏地、钻坚固家具旁或承重墙角、抓牢</div></div>
+      <div class="st"><div class="k">2</div><div class="t">护头颈</div><div class="d">一手护后颈，低头闭眼</div></div>
+      <div class="st"><div class="k">3</div><div class="t">别跳窗</div><div class="d">不跳窗、不乘电梯、不盲目外冲</div></div>
+      <div class="st"><div class="k">4</div><div class="t">室外</div><div class="d">远离建筑、电线杆、路灯、围墙</div></div>
+      <div class="st"><div class="k">5</div><div class="t">震后</div><div class="d">关燃气、别点明火，撤到开阔地</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">被困时不要点火、不要持续呼喊——省氧气省体力，用敲击三声回应。</div>
+  </div>
+
+  <div class="ft">
+    <span>怀斯曼生存手册 第十一章 p.390</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+      <div class="cap">7 · 04 地震 · 正面</div>
+    </div>
+    <div class="face">
+<div class="card back" style="--accent:#6d4b32" id="back">
+  <div class="hd">
+    <span class="no">04</span>
+    <span class="tt">地震 · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① 室内避险</div>
+      <div class="bd">
+        钻坚固家具旁或承重墙角，护住头颈；远离窗户吊灯高柜<br>不跳窗、不乘电梯、不盲目外冲
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">② 室外与撤离</div>
+      <div class="bd">
+        远离建筑、电线杆、路灯、围墙与山体<br>撤离走楼梯，不乘电梯，不返回取物
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">③ 震后处置</div>
+      <div class="bd">
+        检查燃气是否泄漏（闻味听声），不点火、不开电器<br>余震会持续，撤离后待在开阔地
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">④ 被困</div>
+      <div class="bd">
+        保存体力，敲管道三声一组求救；衣物捂口鼻防尘
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+      <div class="cap">8 · 04 地震 · 背面</div>
+    </div>
+    <div class="face">
+<div class="card front" id="front" style="--accent:#3c5566">
+  <div class="hd">
+    <span class="no">05</span>
+    <span class="tt">台风</span>
+    <span class="en">TYPHOON</span>
+  </div>
+  <div class="sub">真正的杀伤在风和水的次生灾害，不在风本身。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">收</div><div class="d">阳台花盆、晾衣杆、杂物全部收进屋</div></div>
+      <div class="st"><div class="k">2</div><div class="t">贴</div><div class="d">玻璃贴米字胶带，防碎裂飞溅</div></div>
+      <div class="st"><div class="k">3</div><div class="t">备</div><div class="d">水、食物、手电、收音机、药备 3 天</div></div>
+      <div class="st"><div class="k">4</div><div class="t">躲</div><div class="d">远离门窗与外墙，待在小房间</div></div>
+      <div class="st"><div class="k">5</div><div class="t">避水</div><div class="d">不涉水，远离河道与地下空间</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">风突然停了是台风眼过境，不是结束——数十分钟后风会反向再来，此刻绝不出门。</div>
+  </div>
+
+  <div class="ft">
+    <span>怀斯曼生存手册 飓风防护 p.388（西太平洋称台风）</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+      <div class="cap">9 · 05 台风 · 正面</div>
+    </div>
+    <div class="face">
+<div class="card back" style="--accent:#3c5566" id="back">
+  <div class="hd">
+    <span class="no">05</span>
+    <span class="tt">台风 · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① 来临前 12–24 h</div>
+      <div class="bd">
+        收阳台物件、加固门窗、玻璃贴米字胶带防飞溅<br>备 3 天量：水（每人每天 3 L）、即食食物、手电、收音机、充电宝、常用药
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">② 过境时</div>
+      <div class="bd">
+        远离门窗与外墙，待在承重墙围合的小房间<br>断电断水后不要用明火照明，可能有燃气泄漏
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">③ 风眼陷阱</div>
+      <div class="bd">
+        风力骤停是台风眼过境，不是结束<br>数十分钟后风会反向增强，此刻绝对不要出门
+      </div>
+    </div>
+    <div class="blk danger">
+      <div class="bt">④ 退水后</div>
+      <div class="bd">
+        不蹚积水（有电、有坑、有排污）；被水泡过的食物不吃
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+      <div class="cap">10 · 05 台风 · 背面</div>
+    </div>
+    <div class="face">
+<div class="card front" id="front" style="--accent:#55683a">
+  <div class="hd">
+    <span class="no">06</span>
+    <span class="tt">野外迷路</span>
+    <span class="en">LOST</span>
+  </div>
+  <div class="sub">迷路之后最危险的动作，是继续走。</div>
+
+  <div class="flow">
+      <div class="st"><div class="k">1</div><div class="t">停</div><div class="d">原地坐下，深呼吸，喝水吃东西</div></div>
+      <div class="st"><div class="k">2</div><div class="t">想</div><div class="d">回想最后确认的位置，估走了多远</div></div>
+      <div class="st"><div class="k">3</div><div class="t">观</div><div class="d">清点装备，看地图，听车声水声</div></div>
+      <div class="st"><div class="k">4</div><div class="t">计划</div><div class="d">原路返回 / 原地待援 / 朝目标走</div></div>
+      <div class="st"><div class="k">5</div><div class="t">信号</div><div class="d">三堆火、三声哨、三次闪光</div></div>
+  </div>
+
+  <div class="warn">
+    <div class="wt">红线</div>
+    <div class="wd">除非有把握或必须移动（如缺水），原地待援是首选——盲目走动只会离最后已知位置更远。</div>
+  </div>
+
+  <div class="ft">
+    <span>怀斯曼生存手册 第二章 p.30 · 第十章 p.359</span>
+    <span class="flip">翻面看详解 →</span>
+  </div>
+</div>
+      <div class="cap">11 · 06 野外迷路 · 正面</div>
+    </div>
+    <div class="face">
+<div class="card back" style="--accent:#55683a" id="back">
+  <div class="hd">
+    <span class="no">06</span>
+    <span class="tt">野外迷路 · 详解</span>
+    <span class="en">DETAIL</span>
+  </div>
+
+  <div class="detail">
+    <div class="blk">
+      <div class="bt">① S.T.O.P</div>
+      <div class="bd">
+        停（Stop）→ 想（Think）→ 观（Observe）→ 计划（Plan）<br>先停，别走——盲目走动只会离最后已知位置更远
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">② 只有三个选项</div>
+      <div class="bd">
+        原路返回 / 原地等待救援 / 朝选定目标前进；没把握就待援
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">③ 信号怎么用</div>
+      <div class="bd">
+        国际通用数字是三：三堆火排成三角形、三声哨、三次闪光<br>间隔一分钟后重复；哨声最省力，别浪费体力狂奔挥手
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bt">④ 求生金字塔</div>
+      <div class="bd">
+        意志是地基，知识是中层，工具箱只是塔尖<br>出发前先定好联络频率与时间，比多带装备更管用
+      </div>
+    </div>
+  </div>
+
+  <div class="qrs">
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h1m1 0h3m4 0h1m2 0h3m1 0h7m-33 1h1m5 0h1m6 0h4m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h4m3 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h2m2 0h1m4 0h2m2 0h1m-25 1h1m1 0h5m2 0h1m3 0h1m1 0h4m1 0h1m5 0h5m-30 1h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h1m1 0h4m1 0h2m1 0h4m-33 1h8m7 0h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h1m-31 1h1m2 0h3m1 0h3m4 0h2m3 0h1m1 0h5m2 0h5m-33 1h2m1 0h1m1 0h3m1 0h3m5 0h2m3 0h1m4 0h3m1 0h1m-30 1h1m1 0h2m1 0h1m2 0h2m2 0h2m2 0h3m2 0h1m1 0h2m2 0h4m-31 1h7m1 0h2m3 0h1m2 0h1m1 0h2m2 0h3m3 0h2m-28 1h1m4 0h1m1 0h6m1 0h1m1 0h3m1 0h3m2 0h2m-31 1h1m3 0h4m3 0h1m1 0h5m2 0h1m1 0h1m2 0h1m1 0h2m3 0h1m-33 1h1m1 0h4m1 0h3m2 0h2m3 0h3m3 0h2m1 0h2m1 0h4m-33 1h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m1 0h1m-30 1h4m3 0h2m1 0h2m1 0h2m2 0h2m1 0h2m3 0h6m-31 1h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h1m1 0h1m5 0h2m2 0h1m-33 1h1m2 0h3m3 0h1m3 0h1m2 0h1m1 0h6m2 0h2m2 0h1m1 0h1m-33 1h1m1 0h1m3 0h4m3 0h6m6 0h1m1 0h2m2 0h1m-32 1h1m1 0h4m1 0h1m2 0h4m4 0h2m1 0h2m1 0h1m2 0h1m1 0h4m-33 1h1m2 0h5m3 0h2m1 0h2m1 0h2m5 0h5m3 0h1m-25 1h1m4 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m5 0h2m1 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h2m2 0h2m4 0h1m1 0h2m2 0h1m3 0h3m-31 1h1m1 0h3m1 0h1m1 0h1m6 0h3m4 0h1m1 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h6m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m-31 1h1m5 0h1m2 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m1 0h3m-31 1h7m1 0h1m8 0h1m1 0h1m2 0h3m1 0h2m3 0h1"/></svg></div>
+      <div class="im">文明重建手册</div>
+      <div class="iu">14 类重建资料检索</div>
+    </div>
+    <div class="qr">
+      <div class="img"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" class="segno"><path class="qrline" stroke="#23201a" d="M2 2.5h7m3 0h2m1 0h2m3 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m4 0h6m5 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h6m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m6 0h1m1 0h2m2 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m1 0h1m2 0h2m4 0h3m1 0h1m-25 1h1m1 0h5m2 0h9m2 0h1m3 0h1m1 0h5m-31 1h1m1 0h1m1 0h1m2 0h3m1 0h1m5 0h3m1 0h3m2 0h2m1 0h4m-33 1h1m1 0h1m2 0h4m3 0h1m2 0h2m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-30 1h5m2 0h1m2 0h1m2 0h1m4 0h8m1 0h4m-32 1h1m1 0h1m1 0h5m3 0h1m2 0h1m1 0h2m3 0h1m4 0h3m1 0h1m-32 1h1m2 0h1m3 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h2m3 0h3m-33 1h2m2 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m1 0h1m1 0h4m2 0h2m-32 1h2m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m2 0h3m2 0h2m-30 1h2m1 0h10m1 0h4m5 0h2m1 0h2m3 0h1m-33 1h1m4 0h1m1 0h2m4 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h4m-31 1h6m4 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-30 1h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h1m2 0h5m-32 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h4m2 0h1m1 0h1m4 0h3m-30 1h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m-33 1h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h2m-32 1h1m2 0h2m2 0h1m2 0h3m1 0h1m3 0h2m1 0h2m1 0h2m1 0h2m1 0h3m-33 1h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h3m2 0h1m3 0h6m2 0h1m-25 1h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m2 0h1m2 0h4m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h4m4 0h1m1 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h1m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h1m1 0h2m2 0h4m1 0h1m-30 1h1m5 0h1m2 0h1m1 0h3m2 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m-31 1h7m1 0h4m5 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h1"/></svg></div>
+      <div class="im">怀斯曼生存手册</div>
+      <div class="iu">11 章 79 节野外指南</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>扫码进检索 · 断网前先存书签</span>
+    <span class="flip">← 正面</span>
+  </div>
+</div>
+      <div class="cap">12 · 06 野外迷路 · 背面</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
