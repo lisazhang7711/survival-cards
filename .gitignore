@@ -1,1 +1,5 @@
 art/gen/
+art/gen2/
+_tmpsrc/
+_*.py
+_pos.txt
