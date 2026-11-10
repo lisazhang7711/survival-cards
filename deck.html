@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>废土物资扑克 · 杀心成焚酱物品图鉴 54 张</title>
-<meta name="description" content="一副扑克牌，正面是牌面，背面是末日物资卡。物品全部来自 B 站 UP 主杀心成焚酱的视频内容：军粮罐头、0 元生存宝箱掉落、废品回收行情、自制装备。食用价值、使用价值、交换价值，一张卡写清。">
+<title>废土物资扑克 · 杀心成焚酱物品图鉴 55 张</title>
+<meta name="description" content="一副扑克牌，正面是牌面，背面是末日物资卡（含隐藏卡「艾丽莎」）。物品全部来自 B 站 UP 主杀心成焚酱的视频内容：军粮罐头、0 元生存宝箱掉落、废品回收行情、自制装备。食用价值、使用价值、交换价值，一张卡写清。">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#22201c;color:#e6ddc6;font-family:"Microsoft YaHei","PingFang SC",sans-serif;padding:24px 16px}
@@ -94,18 +94,18 @@ h1 small{font-size:13px;color:#9a927d;font-weight:400;display:block;margin-top:6
 </head>
 <body class="print-fronts">
 <div class="wrap">
-  <h1>废土物资扑克 <small>正面打牌，背面认物资 · 54 张 · 物品设定来自 B 站 UP 主「杀心成焚酱」的公开视频与专栏</small></h1>
+  <h1>废土物资扑克 <small>正面打牌，背面认物资 · 55 张 · 物品设定来自 B 站 UP 主「杀心成焚酱」的公开视频与专栏</small></h1>
   <p class="intro">
     四个花色，四类价值：<b>♠ 军粮与罐头</b>（末日硬通货，按黑面包计价）、<b>♥ 废土热乎饭</b>（0 元生存副本掉落）、
     <b>♦ 换钱装备</b>（废品回收站行情）、<b>♣ 生存工具</b>（使用价值）。A 最大、2 最小，花色内按物资价值排序。
-    大小王是小丑面具——有人看见笑脸，有人看见泪水。点卡片翻面。
+    大小王是小丑面具——有人看见笑脸，有人看见泪水；还有一张隐藏卡。点卡片翻面。
   </p>
   <p class="disclaimer">非官方同人作品，仅供生存爱好者自用与打印；物品设定与「黑面包」计价体系来自杀心成焚酱公开内容，版权归原 UP 主所有。</p>
   <div class="bar">
     <button onclick="flipAll(true)">全部翻到牌面</button>
     <button onclick="flipAll(false)">全部翻到物资卡</button>
-    <button onclick="doPrint('fronts')">打印牌面（6 页）</button>
-    <button onclick="doPrint('backs')">打印物资卡（6 页）</button>
+    <button onclick="doPrint('fronts')">打印牌面（7 页）</button>
+    <button onclick="doPrint('backs')">打印物资卡（7 页）</button>
     <span class="hint">A4 竖向 · 缩放 100% · 无边距；双面打印选「长边翻转」，牌背已做镜像对位</span>
   </div>
   <div class="table" id="table"></div>
@@ -144,7 +144,7 @@ const ITEMS = [
  stats:[['饱食度','200 点'],['理智','+5'],['心情','+'],['营养','++'],['特色','牛油厚'],['价值','12 黑面包'],['重量','900 g'],['评价','包装糙']],
  flavor:'陆军版比内务部糙不少，餐具一捏就碎。豆子牛肉罐头偏咸，胡萝卜西红柿味的一般般，闹不登的。白糖给得大方， chocolate 微苦，凑合吃。'},
 {s:'s',r:'7',name:'火鸡肉罐头',tag:'整只',emoji:'🦃',code:'08',
- stats:[['饱食度','++'],['心情','++'],['营养','++'],['卡路里','900 kcal'],['特色','肉整只'],['价值','14 黑面包'],['重量','800 g'],['评价','实在']],
+ stats:[['饱食度','++'],['心情','++'],['SAN值','+10'],['营养','++'],['卡路里','900 kcal'],['价值','14 黑面包'],['重量','800 g']],
  flavor:'末日废土物资之火鸡肉罐头，一整只火鸡塞进去，开盖就是节日。冷吃热吃都行，骨头都能嚼出味来。'},
 {s:'s',r:'6',name:'午餐肉罐头',tag:'生产于25年前',emoji:'🥓',code:'09',
  stats:[['饱食度','++'],['理智','-10'],['心情','+'],['营养','+'],['风险','看运气'],['价值','6 黑面包'],['重量','340 g'],['评价','考古']],
@@ -245,7 +245,7 @@ const ITEMS = [
 {s:'c',r:'A',name:'大铁钩子',tag:'打野神器',emoji:'🪝',code:'40',
  stats:[['耐久','++++'],['便携','+++'],['获取','五金店'],['理智','+5'],['交换价值','8 黑面包'],['重量','600 g'],['场景','翻宝箱'],['评价','开局必得']],
  flavor:'翻垃圾箱最好准备一根铁钩子，勾出箱底的垃圾袋，方便，也不伤手。永远不要空手掏——里面的玻璃、针头、铁片，比你想象的狠。打野流的标志性武器。'},
-{s:'c',r:'K',name:'小锤斧',tag:'砸铁专用',emoji:'🔨',code:'41',
+{s:'c',r:'K',name:'小锤斧',tag:'',emoji:'🔨',code:'41',
  stats:[['耐久','++++'],['便携','++'],['获取','劳保店'],['理智','+5'],['交换价值','10 黑面包'],['重量','800 g'],['场景','拆解'],['评价','装备升级']],
  flavor:'装备好的打野人手一把，专砸破旧桌椅上头的铁件。钩子负责找，锤斧负责拆，配合起来，一条街就是你的矿。'},
 {s:'c',r:'Q',name:'2块5斧子',tag:'测评同款',emoji:'🪓',code:'42',
@@ -288,7 +288,10 @@ const ITEMS = [
 {s:'SJ',r:'小王',name:'小丑面具',tag:'泪水',emoji:'😞',code:'54',
  stats:[['理智','+30'],['心情','-10'],['耐久','++'],['便携','++++'],['获取','初始装备'],['重量','50 g'],['特色','真实'],['评价','背面刻着'],
  ],
- flavor:'有人看到面具背后有泪水在流淌。至于面具后面的人看到什么，我不清楚。卖过房帮过兄弟，摸过狗熊救过猫狗——笑是给世界的，泪是自己的。'}
+ flavor:'有人看到面具背后有泪水在流淌。至于面具后面的人看到什么，我不清楚。卖过房帮过兄弟，摸过狗熊救过猫狗——笑是给世界的，泪是自己的。'},
+{s:'EX',r:'EX',name:'艾丽莎',tag:'非卖品',emoji:'👧',code:'55',
+ stats:[['饱食度','—'],['解渴','—'],['心情','+++'],['SAN值','∞'],['营养','—'],['卡路里','—'],['价值','非卖品'],['重量','0 g']],
+ flavor:'小丑骑士丢掉了自己的荣誉之斧，也失去了爱情。废土上什么都捡得到，唯独这个人捡不回来。她不在任何宝箱里，只在那段讲完的故事里。牌堆里唯一的非卖品。'}
 ];
 const SUIT = {s:{sym:'♠',cls:'',label:'军粮与罐头'},h:{sym:'♥',cls:'red',label:'废土热乎饭'},d:{sym:'♦',cls:'red',label:'换钱装备'},c:{sym:'♣',cls:'',label:'生存工具'}};
 
@@ -296,13 +299,14 @@ const SUIT = {s:{sym:'♠',cls:'',label:'军粮与罐头'},h:{sym:'♥',cls:'red
 /* 固定 8 槽（与「冰点毛桃」模板卡完全一致）：
  * 左列上→下：饱食度 / 心情 / 营养 / 价值；右列上→下：解渴 / 理智 / 卡路里 / 重量
  * 网格按行填充：饱食度, 解渴, 心情, 理智, 营养, 卡路里, 价值, 重量 */
-var SLOTS = ['饱食度','解渴','心情','理智','营养','卡路里','价值','重量'];
+var SLOTS = ['饱食度','解渴','心情','SAN值','营养','卡路里','价值','重量'];
 function fixedStats(it){
   var m = {};
   (it.stats || []).forEach(function (p) { if (m[p[0]] === undefined) m[p[0]] = p[1]; });
   /* 各卡历史标签归并到固定槽 */
   if (m['开心'] !== undefined && m['心情'] === undefined) m['心情'] = m['开心'];
   if (m['热量'] !== undefined && m['卡路里'] === undefined) m['卡路里'] = m['热量'];
+  if (m['理智'] !== undefined && m['SAN值'] === undefined) m['SAN值'] = m['理智'];
   /* 价值：黑面包本位优先；方块卡的回收价折进风味文字，不占固定槽 */
   var val = m['约'] || m['价值'] || m['交换价值'] || '—';
   var flavor = it.flavor;
@@ -321,12 +325,13 @@ function valHtml(v){
   return '<span class="val ' + cls + '">' + s.replace(/^\+/, '') + '</span>';
 }
 function backHtml(it){
-  var s = it.s==='BJ'||it.s==='SJ' ? {sym:'★',cls:'red'} : SUIT[it.s];
+  var sp = it.s==='BJ'||it.s==='SJ'||it.s==='EX';
+  var s = sp ? {sym:'★',cls:'red'} : SUIT[it.s];
   var f = fixedStats(it);
   return '<div class="card back">' +
     '<div class="corner ' + s.cls + '">' + s.sym + '<br>' + it.r + '</div>' +
     '<div class="paper">' +
-      '<div class="plaque">「' + it.name + '」<span class="tag">[ ' + it.tag + ' ]</span></div>' +
+      '<div class="plaque">「' + it.name + '」' + (it.tag ? '<span class="tag">[ ' + it.tag + ' ]</span>' : '') + '</div>' +
       '<div class="illus"><span>' + it.emoji + '</span></div>' +
       '<div class="code">20261110-' + it.code + '</div>' +
       '<div class="stats">' +
@@ -352,9 +357,14 @@ var LAY = {
 };
 function frontHtml(it){
   var joker = it.s==='BJ'||it.s==='SJ';
-  var s = joker ? {sym:'★',cls:'red',label:'废土物资 · 王'} : SUIT[it.s];
+  var ex = it.s==='EX';
+  var s = (joker||ex) ? {sym:'★',cls:'red',label:'废土物资 · 王'} : SUIT[it.s];
   var inner;
-  if (joker) {
+  if (ex) {
+    inner = '<div class="court-frame"><div class="jmask">' + it.emoji + '</div>' +
+      '<div style="font-size:17px;font-weight:800;letter-spacing:3px">' + it.name + '</div>' +
+      '<div style="font-size:13px">' + it.tag + '</div></div>';
+  } else if (joker) {
     inner = '<div class="court-frame"><div class="jmask">🎭</div>' +
       '<div style="font-size:15px;font-weight:800;letter-spacing:3px">JOKER</div>' +
       '<div style="font-size:13px">' + it.name + ' · ' + it.tag + '</div></div>';
@@ -371,7 +381,7 @@ function frontHtml(it){
     '<div class="pf-corner"><b>' + it.r + '</b><span>' + s.sym + '</span></div>' +
     '<div class="pf-corner br"><b>' + it.r + '</b><span>' + s.sym + '</span></div>' +
     inner +
-    '<div class="pf-name">' + (joker ? s.label : s.label + ' · ' + it.name) + '</div>' +
+    '<div class="pf-name">' + (joker ? s.label : (ex ? '废土物资 · 隐藏卡' : s.label + ' · ' + it.name)) + '</div>' +
   '</div>';
 }
 /* 屏显桌面：默认亮背面（物资卡），点击翻到牌面 */
