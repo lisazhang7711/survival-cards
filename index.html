@@ -617,6 +617,7 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
   var S = 'survival-cards';
   var K = 'st_vid';
   var P = 'st_dev';
+  var V = 'https://itkjrodrzenefmxsyrnx.supabase.co/functions/v1/visit';
 
   var vid = '';
   try {
@@ -716,25 +717,25 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
   dev.ts = Date.now();
   saveDev(dev);
 
-  post({ p_site: S, p_vid: vid, p_day: day, p_cnt: 1, p_dev: dev });
-
-  var settled = false;
-  var timer = setTimeout(function () { settled = true; }, 2500);
+  // 主路径：云端函数负责计数、查所在地、该推的时候推送
+  var counted = false;
   try {
-    fetch('https://ipwho.is/', { mode: 'cors' })
-      .then(function (r) { return r.json(); })
-      .then(function (j) {
-        if (settled) return;
-        settled = true; clearTimeout(timer);
-        var n = net(j && j.ip);
-        if (n) {
-          dev.ip = n;
-          saveDev(dev);
-          post({ p_site: S, p_vid: vid, p_day: day, p_cnt: 0, p_dev: dev });
-        }
-      })
-      .catch(function () { settled = true; clearTimeout(timer); });
-  } catch (e) {}
+    fetch(V, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ site: S, vid: vid, day: day, dev: dev }),
+      keepalive: true
+    }).then(function (r) {
+      if (!r.ok) throw new Error('bad');
+      counted = true;
+    }).catch(fallback);
+  } catch (e) { fallback(); }
+
+  // 云端不通时退回直连计数，保证数据不丢
+  function fallback() {
+    if (counted) return;
+    post({ p_site: S, p_vid: vid, p_day: day, p_cnt: 1, p_dev: dev });
+  }
 
   function leave() {
     if (left) return; left = true;
