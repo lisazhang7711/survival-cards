@@ -609,7 +609,7 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
 </div>
 </div>
 </div>
-<!-- ===== 站点统计（Supabase 自建，勿删）===== -->
+<!-- ===== 访客统计 v2（Supabase 自建，勿删）===== -->
 <script data-site-stats="survival-cards">
 (function(){
   var U = 'https://itkjrodrzenefmxsyrnx.supabase.co';
@@ -637,16 +637,57 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
            String(d.getUTCDate()).padStart(2, '0');
   }
 
-  function profile(day) {
+  function loadDev() {
     var o = {};
     try { o = JSON.parse(localStorage.getItem(P) || '{}'); } catch (e) {}
-    o.n = (o.n || 0) + 1;
-    o.s = o.s || {}; o.s[S] = (o.s[S] || 0) + 1;
-    o.d = o.d || []; if (o.d.indexOf(day) < 0) o.d.push(day); o.d.sort();
-    o.w = o.w || 0;
-    o.fd = o.fd || day;
-    try { localStorage.setItem(P, JSON.stringify(o)); } catch (e) {}
     return o;
+  }
+  function saveDev(o) {
+    try { localStorage.setItem(P, JSON.stringify(o)); } catch (e) {}
+  }
+
+  function parseUA() {
+    var u = navigator.userAgent || '';
+    var dv = '电脑', os = '未知', br = '未知', m;
+
+    if (/iPad|Tablet/i.test(u)) dv = '平板';
+    else if (/iPhone|iPod/i.test(u)) dv = '手机';
+    else if (/Android/i.test(u)) dv = /Mobile/i.test(u) ? '手机' : '平板';
+    else if (/Windows|Macintosh|Linux|CrOS/i.test(u)) dv = '电脑';
+
+    if (/MicroMessenger/i.test(u)) br = '微信';
+    else if (/AlipayClient/i.test(u)) br = '支付宝';
+    else if (/Weibo/i.test(u)) br = '微博';
+    else if (/Edg\//i.test(u)) br = 'Edge';
+    else if (/UCBrowser/i.test(u)) br = 'UC';
+    else if (/HuaweiBrowser|HBPC/i.test(u)) br = '华为浏览器';
+    else if (/MiuiBrowser/i.test(u)) br = '小米浏览器';
+    else if (/Firefox\//i.test(u)) br = 'Firefox';
+    else if (/CriOS|Chrome\//i.test(u)) br = 'Chrome';
+    else if (/Safari\//i.test(u)) br = 'Safari';
+    else if (/\sQQ\s?[0-9]/i.test(u)) br = 'QQ';
+
+    if (/iPhone|iPad|iPod/i.test(u)) {
+      m = u.match(/OS (\d+)[_.](\d+)/);
+      os = m ? 'iOS ' + m[1] + '.' + m[2] : 'iOS';
+    } else if (/Android/i.test(u)) {
+      m = u.match(/Android (\d+(?:\.\d+)?)/);
+      os = m ? 'Android ' + m[1] : 'Android';
+    } else if (/Windows NT 10/i.test(u)) os = 'Windows 10/11';
+    else if (/Windows NT 6\.1/i.test(u)) os = 'Windows 7';
+    else if (/Mac OS X (\d+)[_.](\d+)/i.test(u)) {
+      m = u.match(/Mac OS X (\d+)[_.](\d+)/);
+      os = 'macOS ' + m[1] + '.' + m[2];
+    } else if (/Linux/i.test(u)) os = 'Linux';
+
+    return { dv: dv, os: os, br: br };
+  }
+
+  function net(ip) {
+    if (!ip) return '';
+    if (ip.indexOf(':') >= 0) return ip.split(':').slice(0, 4).join(':') + '::';
+    var p = ip.split('.');
+    return p.length === 4 ? p.slice(0, 3).join('.') + '.0' : '';
   }
 
   function post(body) {
@@ -662,8 +703,38 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
   }
 
   var t0 = Date.now(), left = false;
-  var day = day8(), dev = profile(day);
+  var day = day8();
+  var dev = loadDev();
+  dev.n = (dev.n || 0) + 1;
+  dev.s = dev.s || {}; dev.s[S] = (dev.s[S] || 0) + 1;
+  dev.d = dev.d || []; if (dev.d.indexOf(day) < 0) dev.d.push(day); dev.d.sort();
+  dev.w = dev.w || 0;
+  dev.fd = dev.fd || day;
+
+  var meta = parseUA();
+  dev.dv = meta.dv; dev.os = meta.os; dev.br = meta.br;
+  dev.ts = Date.now();
+  saveDev(dev);
+
   post({ p_site: S, p_vid: vid, p_day: day, p_cnt: 1, p_dev: dev });
+
+  var settled = false;
+  var timer = setTimeout(function () { settled = true; }, 2500);
+  try {
+    fetch('https://ipwho.is/', { mode: 'cors' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (settled) return;
+        settled = true; clearTimeout(timer);
+        var n = net(j && j.ip);
+        if (n) {
+          dev.ip = n;
+          saveDev(dev);
+          post({ p_site: S, p_vid: vid, p_day: day, p_cnt: 0, p_dev: dev });
+        }
+      })
+      .catch(function () { settled = true; clearTimeout(timer); });
+  } catch (e) {}
 
   function leave() {
     if (left) return; left = true;
@@ -671,7 +742,7 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
     if (sec < 0) sec = 0;
     if (sec > 3600) sec = 3600;
     dev.w = (dev.w || 0) + sec;
-    try { localStorage.setItem(P, JSON.stringify(dev)); } catch (e) {}
+    saveDev(dev);
     post({ p_site: S, p_vid: vid, p_day: day, p_cnt: 0, p_dev: dev, p_dwell: sec });
   }
 
@@ -682,6 +753,6 @@ h1{font-size:17px;margin:0 0 4px;letter-spacing:1px}
   });
 })();
 </script>
-<!-- ===== 埋点结束 ===== -->
+<!-- ===== 统计结束 ===== -->
 </body>
 </html>
